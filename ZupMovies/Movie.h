@@ -17,6 +17,7 @@
 @property (nonatomic, copy) NSString* genre;
 @property (nonatomic, copy) NSString* imdbRaiting;
 @property (nonatomic, copy) NSString* director;
+@property (nonatomic, copy) NSString* poster;
 
 - (id) init;
 
@@ -26,7 +27,8 @@
                 year:(NSString*)_plot
                 year:(NSString*)_genre
            imdbScore:(NSString*)_imdbRaiting
-                year:(NSString*)_director;
+                year:(NSString*)_director
+              poster:(NSString*)_poster;
 
 + (Movie*) parseDictionary:(NSDictionary *) dict;
 

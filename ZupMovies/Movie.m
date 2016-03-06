@@ -10,7 +10,8 @@
 
 @implementation Movie
 
-@synthesize title, actors, genre, imdbRaiting, year, plot, director;
+@synthesize title, actors, genre,
+imdbRaiting, year, plot, director, poster;
 
 - (id) init
 {
@@ -23,6 +24,7 @@
         self.genre = nil;
         self.imdbRaiting = nil;
         self.director = nil;
+        self.poster = nil;
     }
     return self;
 }
@@ -34,6 +36,7 @@
                 year:(NSString*)_genre
            imdbScore:(NSString*)_imdbRaiting
                 year:(NSString*)_director
+              poster:(NSString*)_poster
 {
     self = [super init];
     if (self) {
@@ -44,6 +47,7 @@
         self.genre = _genre;
         self.imdbRaiting = _imdbRaiting;
         self.director = _director;
+        self.poster = _poster;
     }
     return self;
 }
@@ -59,6 +63,7 @@
     [m setGenre: dict[@"Genre"]];
     [m setImdbRaiting: dict[@"imdbRating"]];
     [m setDirector: dict[@"Director"]];
+    [m setPoster: dict[@"Poster"]];
     
     return m;
 }

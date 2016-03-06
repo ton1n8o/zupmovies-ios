@@ -34,7 +34,7 @@ NSArray *_data;
                                                                         handler:nil]];
             } else {
                 Movie *m = [self parseData: data];
-                NSLog(@"Movie: %@", m.title);
+                NSLog(@"Movie: %@, Poster:%@", m.title, m.poster);
                 _data = @[m];
                 [self.tableView reloadData];
             }
@@ -88,12 +88,10 @@ NSArray *_data;
 
 //    UIImageView* imgView = (UIImageView*) [cell viewWithTag: 0];
     ((UILabel*) [cell viewWithTag: 2]).text = movie.title;
-    ((UILabel*) [cell viewWithTag: 3]).text = movie.year;
-    ((UILabel*) [cell viewWithTag: 4]).text = movie.director;
-    ((UILabel*) [cell viewWithTag: 5]).text = movie.genre;
-    ((UILabel*) [cell viewWithTag: 6]).text = movie.director;
-    
-    
+    ((UILabel*) [cell viewWithTag: 3]).text = movie.director;
+    ((UILabel*) [cell viewWithTag: 4]).text = movie.genre;
+    ((UILabel*) [cell viewWithTag: 5]).text = movie.year;
+
     return cell;
 }
 
