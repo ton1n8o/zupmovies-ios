@@ -47,7 +47,7 @@ NSMutableData *_responseData;
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark NSURLConnection Delegate Methods
+#pragma mark - Helpers
      
 - (void) showAlertDialogWithMessage:(NSString*)msg title:(NSString*) title okAction:(UIAlertAction*)action
 {
@@ -64,9 +64,8 @@ NSMutableData *_responseData;
         [self presentViewController:alertController animated:YES completion:nil];
     });
 }
-     
 
-#pragma mark NSURLConnection Delegate Methods
+#pragma mark - NSURLConnection Delegate Methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     // A response has been received, this is where we initialize the instance var you created
