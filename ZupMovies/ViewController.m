@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "Movie.h"
 
 @interface ViewController ()
 
@@ -16,6 +15,7 @@
 @implementation ViewController
 
 NSMutableData *_responseData;
+Movie *_movie;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,6 +63,38 @@ NSMutableData *_responseData;
         
         [self presentViewController:alertController animated:YES completion:nil];
     });
+}
+
+#pragma mark - UITableViewDelegate Delegate Methods
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return  1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tblView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellID = @"cell";
+    
+    UITableViewCell *cell = [tblView dequeueReusableCellWithIdentifier:cellID];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: cellID];
+    }
+
+//    UIImageView* imgView = (UIImageView*) [cell viewWithTag: 0];
+    ((UILabel*) [cell viewWithTag: 2]).text = _movie.title;
+    ((UILabel*) [cell viewWithTag: 3]).text = _movie.year;
+    ((UILabel*) [cell viewWithTag: 4]).text = _movie.director;
+    ((UILabel*) [cell viewWithTag: 5]).text = _movie.genre;
+    
+    
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
 }
 
 #pragma mark - NSURLConnection Delegate Methods

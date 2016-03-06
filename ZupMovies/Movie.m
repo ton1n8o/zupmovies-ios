@@ -10,7 +10,7 @@
 
 @implementation Movie
 
-@synthesize title, actors, genre, imdbRaiting, year;
+@synthesize title, actors, genre, imdbRaiting, year, plot, director;
 
 - (id) init
 {
@@ -20,18 +20,28 @@
         self.actors = nil;
         self.imdbRaiting = nil;
         self.year = nil;
+        self.director = nil;
     }
     return self;
 }
 
-- (id) initWithTitle:(NSString*)_title actors:(NSString*)_actors imdbScore:(NSString*)_imdbRaiting year:(NSString*)_year
+- (id) initWithTitle:(NSString*)_title
+              actors:(NSString*)_actors
+                year:(NSString*)_year
+                year:(NSString*)_plot
+                year:(NSString*)_genre
+           imdbScore:(NSString*)_imdbRaiting
+                year:(NSString*)_director
 {
     self = [super init];
     if (self) {
         self.title = _title;
-        self.actors =_actors;
-        self.imdbRaiting = _imdbRaiting;
+        self.actors = _actors;
         self.year = _year;
+        self.plot = _plot;
+        self.genre = _genre;
+        self.imdbRaiting = _imdbRaiting;
+        self.director = _director;
     }
     return self;
 }
@@ -40,9 +50,12 @@
 {
     Movie *m = [Movie init];
     [m setTitle: dict[@"Title"]];
-    [m setTitle: dict[@"Actors"]];
-    [m setTitle: dict[@"Genre"]];
-    [m setTitle: dict[@"imdbRating"]];
+    [m setActors: dict[@"Actors"]];
+    [m setYear: dict[@"Year"]];
+    [m setPlot: dict[@"Plot"]];
+    [m setGenre: dict[@"Genre"]];
+    [m setImdbRaiting: dict[@"imdbRating"]];
+    [m setDirector: dict[@"Director"]];
     
     return m;
 }

@@ -16,10 +16,17 @@
 @property (nonatomic, copy) NSString* plot;
 @property (nonatomic, copy) NSString* genre;
 @property (nonatomic, copy) NSString* imdbRaiting;
+@property (nonatomic, copy) NSString* director;
 
 - (id) init;
 
-- (id) initWithTitle:(NSString*)_title actors:(NSString*)_actors imdbScore:(NSString*)_imdbRaiting year:(NSString*)_year;
+- (id) initWithTitle:(NSString*)_title
+              actors:(NSString*)_actors
+                year:(NSString*)_year
+                year:(NSString*)_plot
+                year:(NSString*)_genre
+           imdbScore:(NSString*)_imdbRaiting
+                year:(NSString*)_director;
 
 + (Movie*) parseDictionary:(NSDictionary *) dict;
 
