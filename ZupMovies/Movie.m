@@ -18,8 +18,10 @@
     if (self) {
         self.title = nil;
         self.actors = nil;
-        self.imdbRaiting = nil;
         self.year = nil;
+        self.plot = nil;
+        self.genre = nil;
+        self.imdbRaiting = nil;
         self.director = nil;
     }
     return self;
@@ -48,7 +50,8 @@
 
 + (Movie*) parseDictionary:(NSDictionary *) dict
 {
-    Movie *m = [Movie init];
+    Movie *m = [[Movie alloc] init];
+    
     [m setTitle: dict[@"Title"]];
     [m setActors: dict[@"Actors"]];
     [m setYear: dict[@"Year"]];

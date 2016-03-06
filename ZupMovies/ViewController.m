@@ -15,7 +15,7 @@
 @implementation ViewController
 
 NSMutableData *_responseData;
-Movie *_movie;
+NSArray *_data;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,6 +35,8 @@ Movie *_movie;
             } else {
                 Movie *m = [self parseData: data];
                 NSLog(@"Movie: %@", m.title);
+                _data = @[m];
+                [self.tableView reloadData];
             }
             
         }
@@ -81,12 +83,15 @@ Movie *_movie;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: cellID];
     }
+    
+    Movie *movie = [_data objectAtIndex:indexPath.row];
 
 //    UIImageView* imgView = (UIImageView*) [cell viewWithTag: 0];
-    ((UILabel*) [cell viewWithTag: 2]).text = _movie.title;
-    ((UILabel*) [cell viewWithTag: 3]).text = _movie.year;
-    ((UILabel*) [cell viewWithTag: 4]).text = _movie.director;
-    ((UILabel*) [cell viewWithTag: 5]).text = _movie.genre;
+    ((UILabel*) [cell viewWithTag: 2]).text = movie.title;
+    ((UILabel*) [cell viewWithTag: 3]).text = movie.year;
+    ((UILabel*) [cell viewWithTag: 4]).text = movie.director;
+    ((UILabel*) [cell viewWithTag: 5]).text = movie.genre;
+    ((UILabel*) [cell viewWithTag: 6]).text = movie.director;
     
     
     return cell;
@@ -148,17 +153,7 @@ Movie *_movie;
         id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
         if (object) {
             NSDictionary *dict = (NSDictionary*) object;
-            
-            Movie *movie = [[Movie alloc] init];
-            
-            [movie setTitle: dict[@"Title"]];
-            [movie setActors: dict[@"Actors"]];
-            [movie setPlot: dict[@"Plot"]];
-            [movie setYear: dict[@"Year"]];
-            [movie setPlot: dict[@"Genre"]];
-            
-            return movie;
-            
+            return [Movie parseDictionary:dict];
         }
         
     }
