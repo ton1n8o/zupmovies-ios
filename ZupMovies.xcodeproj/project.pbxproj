@@ -14,6 +14,7 @@
 		029B90C01C8C2D8100434B76 /* ZupMovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 029B90BE1C8C2D8100434B76 /* ZupMovies.xcdatamodeld */; };
 		029B90C21C8C2D8100434B76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 029B90C11C8C2D8100434B76 /* Assets.xcassets */; };
 		029B90C51C8C2D8100434B76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 029B90C31C8C2D8100434B76 /* LaunchScreen.storyboard */; };
+		029B90D01C8C3ACB00434B76 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90CF1C8C3ACB00434B76 /* Movie.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,9 @@
 		029B90C11C8C2D8100434B76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		029B90C41C8C2D8100434B76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		029B90C61C8C2D8100434B76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		029B90CE1C8C3ACB00434B76 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
+		029B90CF1C8C3ACB00434B76 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		029B90D11C8C7F9A00434B76 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 		029B90B11C8C2D8100434B76 /* ZupMovies */ = {
 			isa = PBXGroup;
 			children = (
+				029B90D11C8C7F9A00434B76 /* Constants.h */,
+				029B90CD1C8C3ABB00434B76 /* Domain */,
 				029B90B51C8C2D8100434B76 /* AppDelegate.h */,
 				029B90B61C8C2D8100434B76 /* AppDelegate.m */,
 				029B90B81C8C2D8100434B76 /* ViewController.h */,
@@ -80,6 +86,15 @@
 				029B90B31C8C2D8100434B76 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		029B90CD1C8C3ABB00434B76 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				029B90CE1C8C3ACB00434B76 /* Movie.h */,
+				029B90CF1C8C3ACB00434B76 /* Movie.m */,
+			);
+			name = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +169,7 @@
 			files = (
 				029B90C01C8C2D8100434B76 /* ZupMovies.xcdatamodeld in Sources */,
 				029B90BA1C8C2D8100434B76 /* ViewController.m in Sources */,
+				029B90D01C8C3ACB00434B76 /* Movie.m in Sources */,
 				029B90B71C8C2D8100434B76 /* AppDelegate.m in Sources */,
 				029B90B41C8C2D8100434B76 /* main.m in Sources */,
 			);
