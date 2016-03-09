@@ -15,6 +15,7 @@
 		029B90C21C8C2D8100434B76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 029B90C11C8C2D8100434B76 /* Assets.xcassets */; };
 		029B90C51C8C2D8100434B76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 029B90C31C8C2D8100434B76 /* LaunchScreen.storyboard */; };
 		029B90D01C8C3ACB00434B76 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90CF1C8C3ACB00434B76 /* Movie.m */; };
+		029E08751C90CE8400320749 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 029E08741C90CE8400320749 /* MovieDetailViewController.m */; };
 		02E780231C9068D400B57648 /* zup_movies.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E780221C9068D400B57648 /* zup_movies.png */; };
 		04B1B8152E5322A287548B61 /* libPods-ZupMovies.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AB27FA89167C0C076E13E6 /* libPods-ZupMovies.a */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,8 @@
 		029B90CE1C8C3ACB00434B76 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		029B90CF1C8C3ACB00434B76 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		029B90D11C8C7F9A00434B76 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		029E08731C90CE8400320749 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
+		029E08741C90CE8400320749 /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
 		02E780221C9068D400B57648 /* zup_movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zup_movies.png; sourceTree = "<group>"; };
 		6B4BA2C31FEA6B3D74D4836C /* Pods-ZupMovies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZupMovies.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZupMovies/Pods-ZupMovies.release.xcconfig"; sourceTree = "<group>"; };
 		97F20A1B45F6C89EAD350DEF /* Pods-ZupMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZupMovies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZupMovies/Pods-ZupMovies.debug.xcconfig"; sourceTree = "<group>"; };
@@ -73,12 +76,11 @@
 		029B90B11C8C2D8100434B76 /* ZupMovies */ = {
 			isa = PBXGroup;
 			children = (
-				029B90D11C8C7F9A00434B76 /* Constants.h */,
-				029B90CD1C8C3ABB00434B76 /* Domain */,
 				029B90B51C8C2D8100434B76 /* AppDelegate.h */,
 				029B90B61C8C2D8100434B76 /* AppDelegate.m */,
-				029B90B81C8C2D8100434B76 /* ViewController.h */,
-				029B90B91C8C2D8100434B76 /* ViewController.m */,
+				029B90D11C8C7F9A00434B76 /* Constants.h */,
+				029E08721C90CE3600320749 /* ViewControllers */,
+				029B90CD1C8C3ABB00434B76 /* Domain */,
 				029B90BB1C8C2D8100434B76 /* Main.storyboard */,
 				029B90C11C8C2D8100434B76 /* Assets.xcassets */,
 				029B90C31C8C2D8100434B76 /* LaunchScreen.storyboard */,
@@ -105,6 +107,17 @@
 				029B90CF1C8C3ACB00434B76 /* Movie.m */,
 			);
 			name = Domain;
+			sourceTree = "<group>";
+		};
+		029E08721C90CE3600320749 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				029B90B81C8C2D8100434B76 /* ViewController.h */,
+				029B90B91C8C2D8100434B76 /* ViewController.m */,
+				029E08731C90CE8400320749 /* MovieDetailViewController.h */,
+				029E08741C90CE8400320749 /* MovieDetailViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		02E780211C90684400B57648 /* Images */ = {
@@ -254,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				029E08751C90CE8400320749 /* MovieDetailViewController.m in Sources */,
 				029B90C01C8C2D8100434B76 /* ZupMovies.xcdatamodeld in Sources */,
 				029B90BA1C8C2D8100434B76 /* ViewController.m in Sources */,
 				029B90D01C8C3ACB00434B76 /* Movie.m in Sources */,

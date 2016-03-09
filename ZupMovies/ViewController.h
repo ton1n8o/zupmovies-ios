@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Constants.h"
 #import "Movie.h"
+#import "MovieDetailViewController.h"
 
 @interface ViewController : UIViewController<NSURLConnectionDataDelegate, UITableViewDataSource,
 UITableViewDelegate, UISearchControllerDelegate, UISearchBarDelegate>

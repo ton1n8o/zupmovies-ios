@@ -30,6 +30,18 @@ NSString *searchTerm;
     // Dispose of any resources that can be recreated.
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showMovieDetail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        MovieDetailViewController *md = segue.destinationViewController;
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        UIImageView *imageView = [cell viewWithTag:1];
+        md.image = imageView.image;
+    }
+}
+
 #pragma mark - Search
 
 - (void) search:(NSString*)searchTerm
