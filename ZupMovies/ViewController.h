@@ -10,7 +10,8 @@
 #import "Constants.h"
 #import "Movie.h"
 
-@interface ViewController : UIViewController<NSURLConnectionDataDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface ViewController : UIViewController<NSURLConnectionDataDelegate, UITableViewDataSource,
+UITableViewDelegate, UISearchControllerDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

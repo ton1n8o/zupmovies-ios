@@ -9,7 +9,7 @@
 #ifndef ZupMovies_Constants_h
 #define ZupMovies_Constants_h
 
-#define SERVER_PATH @"http://www.omdbapi.com/"  // PRODUCTION ENVIRONMENT
+#define SERVER_PATH @"http://www.omdbapi.com/"
 
 
 #endif

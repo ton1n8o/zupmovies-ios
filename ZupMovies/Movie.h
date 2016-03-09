@@ -18,17 +18,21 @@
 @property (nonatomic, copy) NSString* imdbRaiting;
 @property (nonatomic, copy) NSString* director;
 @property (nonatomic, copy) NSString* poster;
+@property (nonatomic, copy) NSString* type;
+@property (nonatomic, copy) NSString* imdbID;
 
 - (id) init;
 
-- (id) initWithTitle:(NSString*)_title
-              actors:(NSString*)_actors
-                year:(NSString*)_year
-                year:(NSString*)_plot
-                year:(NSString*)_genre
-           imdbScore:(NSString*)_imdbRaiting
-                year:(NSString*)_director
-              poster:(NSString*)_poster;
+- (id) initWithTitle:(NSString*) _title
+              actors:(NSString*) _actors
+                year:(NSString*) _year
+                year:(NSString*) _plot
+                year:(NSString*) _genre
+           imdbScore:(NSString*) _imdbRaiting
+                year:(NSString*) _director
+              poster:(NSString*) _poster
+                type:(NSString*) _type
+              imdbID:(NSString*) _imdbID;
 
 + (Movie*) parseDictionary:(NSDictionary *) dict;
 
