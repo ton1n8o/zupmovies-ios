@@ -138,20 +138,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Busca" id="bVh-hd-hDE"/>
                     <connections>
-                        <outlet property="searchDisplayController" destination="Kuu-zT-CwY" id="nwS-Kr-7O4"/>
                         <outlet property="tableView" destination="cil-wV-SQj" id="BlA-45-2hW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dni-mg-H2z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="Kuu-zT-CwY">
-                    <connections>
-                        <outlet property="delegate" destination="f2R-oD-xA6" id="2ir-Xg-07j"/>
-                        <outlet property="searchBar" destination="4MM-qD-2sd" id="yXt-It-AqO"/>
-                        <outlet property="searchContentsController" destination="f2R-oD-xA6" id="1re-tc-eux"/>
-                        <outlet property="searchResultsDataSource" destination="f2R-oD-xA6" id="2Lh-fq-E2m"/>
-                        <outlet property="searchResultsDelegate" destination="f2R-oD-xA6" id="WE7-fQ-6IT"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1861" y="520"/>
         </scene>
@@ -215,11 +205,17 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wKR-we-HZx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xdG-XB-k0q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="xdG-XB-k0q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.58431372549019611" green="0.72156862745098038" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dbq-oI-Rdn">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="m6e-hF-VO8"/>
                     </connections>

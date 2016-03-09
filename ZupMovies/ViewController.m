@@ -143,6 +143,9 @@ NSString *searchTerm;
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self search:searchBar.text];
+    
+    // remove focus
+    [searchBar resignFirstResponder];
 }
 
 #pragma mark - Search

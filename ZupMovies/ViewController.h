@@ -12,7 +12,7 @@
 #import "MovieDetailViewController.h"
 
 @interface ViewController : UIViewController<NSURLConnectionDataDelegate, UITableViewDataSource,
-UITableViewDelegate, UISearchControllerDelegate, UISearchBarDelegate>
+UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
