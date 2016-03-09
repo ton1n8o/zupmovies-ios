@@ -15,6 +15,8 @@
 		029B90C21C8C2D8100434B76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 029B90C11C8C2D8100434B76 /* Assets.xcassets */; };
 		029B90C51C8C2D8100434B76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 029B90C31C8C2D8100434B76 /* LaunchScreen.storyboard */; };
 		029B90D01C8C3ACB00434B76 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90CF1C8C3ACB00434B76 /* Movie.m */; };
+		02E780231C9068D400B57648 /* zup_movies.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E780221C9068D400B57648 /* zup_movies.png */; };
+		04B1B8152E5322A287548B61 /* libPods-ZupMovies.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AB27FA89167C0C076E13E6 /* libPods-ZupMovies.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,10 @@
 		029B90CE1C8C3ACB00434B76 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		029B90CF1C8C3ACB00434B76 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		029B90D11C8C7F9A00434B76 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		02E780221C9068D400B57648 /* zup_movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zup_movies.png; sourceTree = "<group>"; };
+		6B4BA2C31FEA6B3D74D4836C /* Pods-ZupMovies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZupMovies.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZupMovies/Pods-ZupMovies.release.xcconfig"; sourceTree = "<group>"; };
+		97F20A1B45F6C89EAD350DEF /* Pods-ZupMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZupMovies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZupMovies/Pods-ZupMovies.debug.xcconfig"; sourceTree = "<group>"; };
+		D4AB27FA89167C0C076E13E6 /* libPods-ZupMovies.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZupMovies.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B1B8152E5322A287548B61 /* libPods-ZupMovies.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +57,8 @@
 			children = (
 				029B90B11C8C2D8100434B76 /* ZupMovies */,
 				029B90B01C8C2D8100434B76 /* Products */,
+				5CB21F72110F4AB32664586E /* Pods */,
+				B4FBAB9CF83BCFFB384D4292 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +92,7 @@
 		029B90B21C8C2D8100434B76 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				02E780211C90684400B57648 /* Images */,
 				029B90B31C8C2D8100434B76 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -97,6 +107,31 @@
 			name = Domain;
 			sourceTree = "<group>";
 		};
+		02E780211C90684400B57648 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				02E780221C9068D400B57648 /* zup_movies.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		5CB21F72110F4AB32664586E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				97F20A1B45F6C89EAD350DEF /* Pods-ZupMovies.debug.xcconfig */,
+				6B4BA2C31FEA6B3D74D4836C /* Pods-ZupMovies.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B4FBAB9CF83BCFFB384D4292 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4AB27FA89167C0C076E13E6 /* libPods-ZupMovies.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -104,9 +139,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 029B90C91C8C2D8100434B76 /* Build configuration list for PBXNativeTarget "ZupMovies" */;
 			buildPhases = (
+				46F6FB91E43DE4F06D3121DF /* Check Pods Manifest.lock */,
 				029B90AB1C8C2D8100434B76 /* Sources */,
 				029B90AC1C8C2D8100434B76 /* Frameworks */,
 				029B90AD1C8C2D8100434B76 /* Resources */,
+				075C85F7C4D24612CFB19DDF /* Embed Pods Frameworks */,
+				66A7D9872692B753CF86244D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,11 +194,60 @@
 			files = (
 				029B90C51C8C2D8100434B76 /* LaunchScreen.storyboard in Resources */,
 				029B90C21C8C2D8100434B76 /* Assets.xcassets in Resources */,
+				02E780231C9068D400B57648 /* zup_movies.png in Resources */,
 				029B90BD1C8C2D8100434B76 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		075C85F7C4D24612CFB19DDF /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZupMovies/Pods-ZupMovies-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		46F6FB91E43DE4F06D3121DF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		66A7D9872692B753CF86244D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZupMovies/Pods-ZupMovies-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		029B90AB1C8C2D8100434B76 /* Sources */ = {
@@ -279,6 +366,7 @@
 		};
 		029B90CA1C8C2D8100434B76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97F20A1B45F6C89EAD350DEF /* Pods-ZupMovies.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ZupMovies/Info.plist;
@@ -290,6 +378,7 @@
 		};
 		029B90CB1C8C2D8100434B76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B4BA2C31FEA6B3D74D4836C /* Pods-ZupMovies.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ZupMovies/Info.plist;
@@ -318,6 +407,7 @@
 				029B90CB1C8C2D8100434B76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

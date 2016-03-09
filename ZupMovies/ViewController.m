@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ViewController ()
 
@@ -47,13 +48,13 @@ NSString *searchTerm;
                                                                       style:UIAlertActionStyleDefault
                                                                     handler:nil]];
             
-            NSLog(@"ERRROR:  %@", error);
+            NSLog(@"ERROR: %@", error);
             
         } else {
             
             _data = [self parseData: data];
+            NSLog(@"Movies: %tu", [_data count]);
             
-//            NSLog(@"000000000000000000");
             dispatch_async(dispatch_get_main_queue(), ^{
                 // code here
                 [self.tableView reloadData];
@@ -104,13 +105,19 @@ NSString *searchTerm;
     }
     
     Movie *movie = [_data objectAtIndex:indexPath.row];
-
-//    UIImageView* imgView = (UIImageView*) [cell viewWithTag: 0];
+    
     ((UILabel*) [cell viewWithTag: 2]).text = movie.title;
     ((UILabel*) [cell viewWithTag: 3]).text = movie.director;
     ((UILabel*) [cell viewWithTag: 4]).text = movie.genre;
     ((UILabel*) [cell viewWithTag: 5]).text = movie.year;
-
+    
+    UIImageView *imgView = (UIImageView*) [cell viewWithTag: 1];
+    
+    [imgView sd_setImageWithURL:
+     [NSURL URLWithString:movie.poster]
+               placeholderImage:[UIImage
+                                 imageNamed:@"zup_movies.png"]];
+    
     return cell;
 }
 
