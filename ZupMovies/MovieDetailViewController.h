@@ -13,4 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) UIImage *image;
 
+- (IBAction)save:(id)sender;
+
+- (IBAction)cancel:(id)sender;
+
 @end
