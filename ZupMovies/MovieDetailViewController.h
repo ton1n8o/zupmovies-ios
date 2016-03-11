@@ -9,9 +9,14 @@
 #import "ViewController.h"
 
 @interface MovieDetailViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *lblGenre;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) UIImage *image;
+
+@property (weak, nonatomic) NSString *imdbId;
+@property (weak, nonatomic) IBOutlet UILabel *lblMovieTitle;
+@property (weak, nonatomic) NSString *movieTitle;
 
 - (IBAction)save:(id)sender;
 

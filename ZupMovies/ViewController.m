@@ -37,8 +37,13 @@ NSString *searchTerm;
         
         MovieDetailViewController *md = segue.destinationViewController;
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        Movie *movie = [_data objectAtIndex:indexPath.row];
+        
         UIImageView *imageView = [cell viewWithTag:1];
         md.image = imageView.image;
+        md.movieTitle = movie.title;
+        md.imdbId = movie.imdbID;
     }
 }
 
@@ -138,6 +143,11 @@ NSString *searchTerm;
     return _data.count;
 }
 
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 #pragma mark - UISearchControllerDelegate Delegate Methods
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -156,6 +166,7 @@ NSString *searchTerm;
     NSString *url = [NSString stringWithFormat:@"%@%@%@%@", SERVER_PATH, @"?s=", searchTerm, @"&page=1"];
     
     NSLog(@"URL: %@", url);
+    url = [url stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
