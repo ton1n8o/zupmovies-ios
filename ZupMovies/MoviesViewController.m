@@ -42,6 +42,9 @@ NSMutableArray *_movies;
     if ([segue.identifier isEqualToString:@"segueAddMovie"]) {
         ViewController *view = segue.destinationViewController;
         view.moviesViewController = self;
+    } else if ([segue.identifier isEqualToString:@"showMovieDetailFromHome"]) {
+        MovieDetailViewController *view = segue.destinationViewController;
+        view.hideSaveButton = YES;
     }
 }
 
@@ -84,7 +87,7 @@ NSMutableArray *_movies;
     return _movies.count;
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.moviesTableView deselectRowAtIndexPath:indexPath animated:YES];
 }

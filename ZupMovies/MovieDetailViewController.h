@@ -17,6 +17,8 @@
 
 @interface MovieDetailViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UINavigationItem *navigationItem;
+
 @property (weak, nonatomic) IBOutlet UILabel *lblGenre;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) UIImage *image;
@@ -26,6 +28,7 @@
 
 @property (weak, nonatomic) NSString *imdbId;
 @property (retain, nonatomic) id delegate;
+@property (nonatomic) BOOL hideSaveButton;
 
 - (IBAction)save:(id)sender;
 

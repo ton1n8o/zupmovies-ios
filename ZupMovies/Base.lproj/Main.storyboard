@@ -76,6 +76,9 @@
                                                 <constraint firstItem="gjB-Bs-OG5" firstAttribute="leading" secondItem="w9A-Od-dAq" secondAttribute="leading" id="ouz-ap-Zlf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="zjc-j7-Tks" kind="showDetail" identifier="showMovieDetailFromHome" id="Ij7-Dz-vl1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -105,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1161" y="520"/>
+            <point key="canvasLocation" x="1221" y="-284"/>
         </scene>
         <!--Busca-->
         <scene sceneID="dRd-Qg-cdA">
@@ -207,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dni-mg-H2z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1861" y="520"/>
+            <point key="canvasLocation" x="1221" y="464"/>
         </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="gW0-H3-45i">
@@ -235,6 +238,9 @@
                                                 <action selector="save:" destination="zjc-j7-Tks" id="enP-Fr-EuH"/>
                                             </connections>
                                         </barButtonItem>
+                                        <connections>
+                                            <outlet property="rightBarButtonItem" destination="gih-Ln-9v3" id="X2r-xK-1qI"/>
+                                        </connections>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -284,11 +290,12 @@
                         <outlet property="imageView" destination="mOK-XI-nvr" id="REt-33-Hvg"/>
                         <outlet property="lblGenre" destination="MSW-dl-SnU" id="219-aC-mtu"/>
                         <outlet property="lblMovieTitle" destination="dhy-9I-Jwj" id="kPy-dr-k4G"/>
+                        <outlet property="navigationItem" destination="yMR-aV-AoT" id="PYE-DP-F44"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIR-Sp-RaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2531" y="520"/>
+            <point key="canvasLocation" x="2131" y="76"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="02p-7V-wo1">
@@ -312,7 +319,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUT-rt-quJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="435" y="520"/>
+            <point key="canvasLocation" x="439" y="-284"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="A50-rC-Y6J"/>
+    </inferredMetricsTieBreakers>
 </document>

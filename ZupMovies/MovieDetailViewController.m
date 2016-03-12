@@ -15,9 +15,10 @@
 
 @implementation MovieDetailViewController
 
-Movie *movie;
+@synthesize imdbId, movieTitle, navigationItem, hideSaveButton;
 
-@synthesize imdbId, movieTitle;
+Movie *movie;
+UIBarButtonItem *btnSaveTmp;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,7 +34,6 @@ Movie *movie;
         
         movie = [self parseData:data];
         
-        
         if (movie) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 // code here
@@ -44,6 +44,10 @@ Movie *movie;
         }
         
     }];
+   
+    if (hideSaveButton) {
+       self.navigationItem.rightBarButtonItem = nil; 
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,7 +60,7 @@ Movie *movie;
     
     if ([self findMovie:movie.imdbID]) {
         [self showAlertDialogWithMessage:@"Filme já salvo!"
-                                   title:@"Informação"
+                                   title:nil
                                 okAction:[UIAlertAction actionWithTitle:@"OK"
                                                                   style:UIAlertActionStyleDefault
                                                                 handler:nil]];
@@ -81,7 +85,7 @@ Movie *movie;
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
     } else {
         [self showAlertDialogWithMessage:@"Filme salvo com suceso!"
-                                   title:@"Informação"
+                                   title:nil
                                 okAction:[UIAlertAction actionWithTitle:@"OK"
                                                                   style:UIAlertActionStyleDefault
                                                                 handler:^(UIAlertAction * action) {
