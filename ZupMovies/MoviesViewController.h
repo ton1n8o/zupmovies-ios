@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Movie.h"
 #import "MovieDetailViewController.h"
+#import "AppDelegate.h"
 
 @interface MoviesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MovieDelegate>
 

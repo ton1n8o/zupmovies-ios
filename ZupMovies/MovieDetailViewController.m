@@ -63,9 +63,7 @@ Movie *movie;
         return;
     }
     
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSManagedObjectContext *context = [self managedObjectContext];
     
     NSManagedObject *newMovie;
     newMovie = [NSEntityDescription insertNewObjectForEntityForName:@"Movie"
@@ -80,7 +78,7 @@ Movie *movie;
     
     NSError *error;
     if ([context save:&error] == NO) {
-        NSLog(@"NOT OK!!!");
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
     } else {
         [self showAlertDialogWithMessage:@"Filme salvo com suceso!"
                                    title:@"Informação"
@@ -99,9 +97,7 @@ Movie *movie;
 
 - (Movie*) findMovie:(NSString *) imdbId
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSManagedObjectContext *context = [self managedObjectContext];
     
     NSEntityDescription *entityDesc =
     [NSEntityDescription entityForName:@"Movie"
@@ -150,6 +146,15 @@ Movie *movie;
         // code here
         [self presentViewController:alertController animated:YES completion:nil];
     });
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
 }
 
 #pragma mark - Search

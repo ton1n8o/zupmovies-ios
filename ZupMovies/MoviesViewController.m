@@ -17,13 +17,17 @@
 
 @synthesize moviesTableView;
 
-NSArray *_movies;
+NSMutableArray *_movies;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self updateTableView:[self findMovies]];
+    [self.moviesTableView setAllowsSelectionDuringEditing:NO];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self updateTableView:[self findAllMovies]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,18 +89,46 @@ NSArray *_movies;
     [self.moviesTableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        Movie *movie = (Movie*) [_movies objectAtIndex:indexPath.row];
+        
+        NSManagedObject *m = [self  findMovieBy:movie.imdbID];
+        if (m) {
+            
+            [[self managedObjectContext] deleteObject:m];
+            
+            NSError *error = nil;
+            if (![[self managedObjectContext] save:&error]) {
+                return;
+            }
+            
+            [_movies removeObjectAtIndex:indexPath.row];
+            [self.moviesTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        
+    }
+}
+
 #pragma mark - MovieDelegate
 
 -(void)updateMovies:(BOOL)update
 {
-    [self updateTableView:[self findMovies]];
+    [self updateTableView:[self findAllMovies]];
 }
 
 #pragma mark - Helpers
 
 - (void) updateTableView:(NSArray *)movies
 {
-    _movies = movies;
+    _movies = [[NSMutableArray alloc] initWithArray:movies];
     NSLog(@"Movies: %tu", [_movies count]);
     dispatch_async(dispatch_get_main_queue(), ^{
         // code here
@@ -104,11 +136,9 @@ NSArray *_movies;
     });
 }
 
-- (NSMutableArray*) findMovies
+- (NSMutableArray*) findAllMovies
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSManagedObjectContext *context = [self managedObjectContext];
     
     NSEntityDescription *entityDesc =
     [NSEntityDescription entityForName:@"Movie"
@@ -132,6 +162,7 @@ NSArray *_movies;
             movie.genre = [obj valueForKey:@"genre"];
             movie.year = [obj valueForKey:@"year"];
             movie.actors = [obj valueForKey:@"actors"];
+            movie.imdbID = [obj valueForKey:@"imdbID"];
             movie.image = [UIImage imageWithData:[obj valueForKey:@"picture"]];
             
             [movies addObject:movie];
@@ -140,6 +171,41 @@ NSArray *_movies;
         
         return  movies;
     }
+}
+
+- (NSManagedObject*) findMovieBy:(NSString *) imdbId
+{
+    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSEntityDescription *entityDesc =
+    [NSEntityDescription entityForName:@"Movie"
+                inManagedObjectContext:context];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    NSPredicate *pred =
+    [NSPredicate predicateWithFormat:@"(imdbID = %@)", imdbId];
+    [request setPredicate:pred];
+    
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    if ([objects count] == 0) {
+        return nil;
+    } else {
+        return objects[0];
+    }
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
 }
 
 @end
