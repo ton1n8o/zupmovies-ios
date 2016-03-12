@@ -16,5 +16,7 @@ UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property(nonatomic, weak) UIViewController *moviesViewController;
+
 @end
 

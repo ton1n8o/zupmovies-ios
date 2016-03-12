@@ -16,6 +16,8 @@
 
 @implementation ViewController
 
+@synthesize modalViewController;
+
 //NSMutableData *_responseData;
 NSArray *_data;
 NSTimer *searchDelayer;
@@ -32,6 +34,8 @@ NSString *searchTerm;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Navigation
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showMovieDetail"]) {
@@ -46,37 +50,10 @@ NSString *searchTerm;
         md.image = imageView.image;
         md.movieTitle = movie.title;
         md.imdbId = movie.imdbID;
+        
+        // referência ao delegate para atualziar a tela quando criar/excluir um filme
+        md.delegate = self.moviesViewController;
     }
-}
-
-#pragma mark - Search
-
-- (void) search:(NSString*)searchTerm
-{
-
-    [self requestWithTerm:searchTerm withCompletion:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        // parser do json.
-        if (error != nil) {
-            
-            [self showAlertDialogWithMessage:@"Erro ao carregar dados do filme."
-                                       title:@"Erro"
-                                    okAction:[UIAlertAction actionWithTitle:@"OK"
-                                                                      style:UIAlertActionStyleDefault
-                                                                    handler:nil]];
-            
-            NSLog(@"ERROR: %@", error);
-            
-        } else {
-            [self updateTableView:[self parseData: data]];
-        }
-        
-        
-    }];
-    searchDelayer =  nil;
-    
 }
 
 #pragma mark - Helpers
@@ -185,6 +162,7 @@ NSString *searchTerm;
 
 - (NSArray *) parseData:(NSData *) data
 {
+    
     NSMutableArray* movies = [[NSMutableArray alloc] init];
     if (data) {
         NSError *jsonParsingError = nil;
@@ -209,6 +187,34 @@ NSString *searchTerm;
         
     }
     return movies;
+}
+
+- (void) search:(NSString*)searchTerm
+{
+    
+    [self requestWithTerm:searchTerm withCompletion:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        // parser do json.
+        if (error != nil) {
+            
+            [self showAlertDialogWithMessage:@"Erro ao carregar dados do filme."
+                                       title:@"Erro"
+                                    okAction:[UIAlertAction actionWithTitle:@"OK"
+                                                                      style:UIAlertActionStyleDefault
+                                                                    handler:nil]];
+            
+            NSLog(@"ERROR: %@", error);
+            
+        } else {
+            [self updateTableView:[self parseData: data]];
+        }
+        
+        
+    }];
+    searchDelayer =  nil;
+    
 }
 
 @end

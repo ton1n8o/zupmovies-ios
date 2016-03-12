@@ -95,7 +95,7 @@
                     <navigationItem key="navigationItem" title="Movies" id="xnD-tU-zcQ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xDx-6N-1mh">
                             <connections>
-                                <segue destination="f2R-oD-xA6" kind="show" id="T0a-l5-Gaf"/>
+                                <segue destination="f2R-oD-xA6" kind="show" identifier="segueAddMovie" id="T0a-l5-Gaf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

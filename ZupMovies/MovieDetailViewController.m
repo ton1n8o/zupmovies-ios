@@ -89,6 +89,10 @@ Movie *movie;
                                                                 handler:^(UIAlertAction * action) {
                                                                     [self dismissViewControllerAnimated:YES completion:nil];
                                                                 }]];
+        
+        if([self.delegate conformsToProtocol:@protocol(MovieDelegate)]) {
+            [self.delegate updateMovies: YES];
+        }
     }
     
 }

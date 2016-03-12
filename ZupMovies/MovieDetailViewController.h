@@ -9,15 +9,23 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 
-@interface MovieDetailViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *lblGenre;
+@protocol MovieDelegate
 
+    -(void)updateMovies:(BOOL)update;
+
+@end
+
+@interface MovieDetailViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UILabel *lblGenre;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) UIImage *image;
 
-@property (weak, nonatomic) NSString *imdbId;
 @property (weak, nonatomic) IBOutlet UILabel *lblMovieTitle;
 @property (weak, nonatomic) NSString *movieTitle;
+
+@property (weak, nonatomic) NSString *imdbId;
+@property (retain, nonatomic) id delegate;
 
 - (IBAction)save:(id)sender;
 
