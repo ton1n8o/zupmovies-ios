@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface MovieDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *lblGenre;

@@ -7,13 +7,15 @@
 //
 
 #import "MovieDetailViewController.h"
+#import "Movie.h"
 
 @interface MovieDetailViewController ()
 
 @end
 
-
 @implementation MovieDetailViewController
+
+Movie *movie;
 
 @synthesize imdbId, movieTitle;
 
@@ -29,13 +31,12 @@
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
-        Movie *movie = [self parseData:data];
+        movie = [self parseData:data];
         
         
         if (movie) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 // code here
-                
                 self.lblGenre.text = movie.genre;
                 
             });
@@ -50,23 +51,99 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 - (IBAction)save:(id)sender
 {
-    NSLog(@"Save...");
+    
+    if ([self findMovie:movie.imdbID]) {
+        [self showAlertDialogWithMessage:@"Filme já salvo!"
+                                   title:@"Informação"
+                                okAction:[UIAlertAction actionWithTitle:@"OK"
+                                                                  style:UIAlertActionStyleDefault
+                                                                handler:nil]];
+        return;
+    }
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    
+    NSManagedObject *newMovie;
+    newMovie = [NSEntityDescription insertNewObjectForEntityForName:@"Movie"
+                                             inManagedObjectContext:context];
+    
+    [newMovie setValue: movie.title forKey: @"title"];
+    [newMovie setValue: movie.genre forKey: @"genre"];
+    [newMovie setValue: movie.actors forKey: @"actors"];
+    [newMovie setValue: movie.imdbID forKey: @"imdbID"];
+    
+    NSError *error;
+    if ([context save:&error] == NO) {
+        NSLog(@"NOT OK!!!");
+    } else {
+        [self showAlertDialogWithMessage:@"Filme salvo com suceso!"
+                                   title:@"Informação"
+                                okAction:[UIAlertAction actionWithTitle:@"OK"
+                                                                  style:UIAlertActionStyleDefault
+                                                                handler:^(UIAlertAction * action) {
+                                                                    [self dismissViewControllerAnimated:YES completion:nil];
+                                                                }]];
+    }
+    
+}
+
+- (Movie*) findMovie:(NSString *) imdbId
+{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    
+    NSEntityDescription *entityDesc =
+    [NSEntityDescription entityForName:@"Movie"
+                inManagedObjectContext:context];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    NSPredicate *pred =
+    [NSPredicate predicateWithFormat:@"(imdbID = %@)", movie.imdbID];
+    [request setPredicate:pred];
+    NSManagedObject *matches = nil;
+    
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    if ([objects count] == 0) {
+        return nil;
+    } else {
+        matches = objects[0];
+        movie.title = [matches valueForKey:@"title"];
+        movie.genre = [matches valueForKey:@"genre"];
+        movie.actors = [matches valueForKey:@"actors"];
+        return  movie;
+    }
 }
 
 - (IBAction)cancel:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Helpers
+
+- (void) showAlertDialogWithMessage:(NSString*)msg title:(NSString*) title okAction:(UIAlertAction*)action
+{
+    
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle: title
+                                          message: msg
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction: action];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // code here
+        [self presentViewController:alertController animated:YES completion:nil];
+    });
 }
 
 #pragma mark - Search
