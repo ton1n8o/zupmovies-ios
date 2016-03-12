@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Movie : NSObject
 
@@ -20,6 +21,7 @@
 @property (nonatomic, copy) NSString* poster;
 @property (nonatomic, copy) NSString* type;
 @property (nonatomic, copy) NSString* imdbID;
+@property (nonatomic, strong) UIImage* image;
 
 - (id) init;
 

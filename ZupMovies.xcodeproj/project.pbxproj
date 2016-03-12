@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02590D891C94608600453A97 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02590D881C94608600453A97 /* MoviesViewController.m */; };
 		029B90B41C8C2D8100434B76 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90B31C8C2D8100434B76 /* main.m */; };
 		029B90B71C8C2D8100434B76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90B61C8C2D8100434B76 /* AppDelegate.m */; };
 		029B90BA1C8C2D8100434B76 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90B91C8C2D8100434B76 /* ViewController.m */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02590D871C94608600453A97 /* MoviesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
+		02590D881C94608600453A97 /* MoviesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
 		029B90AF1C8C2D8100434B76 /* ZupMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZupMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		029B90B31C8C2D8100434B76 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		029B90B51C8C2D8100434B76 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 		029E08721C90CE3600320749 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				02590D871C94608600453A97 /* MoviesViewController.h */,
+				02590D881C94608600453A97 /* MoviesViewController.m */,
 				029B90B81C8C2D8100434B76 /* ViewController.h */,
 				029B90B91C8C2D8100434B76 /* ViewController.m */,
 				029E08731C90CE8400320749 /* MovieDetailViewController.h */,
@@ -272,6 +277,7 @@
 				029B90BA1C8C2D8100434B76 /* ViewController.m in Sources */,
 				029B90D01C8C3ACB00434B76 /* Movie.m in Sources */,
 				029B90B71C8C2D8100434B76 /* AppDelegate.m in Sources */,
+				02590D891C94608600453A97 /* MoviesViewController.m in Sources */,
 				029B90B41C8C2D8100434B76 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

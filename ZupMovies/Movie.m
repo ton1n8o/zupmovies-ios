@@ -11,7 +11,7 @@
 @implementation Movie
 
 @synthesize title, actors, genre,
-imdbRaiting, year, plot, director, poster, type, imdbID;
+imdbRaiting, year, plot, director, poster, type, imdbID, image;
 
 - (id) init
 {
@@ -27,6 +27,7 @@ imdbRaiting, year, plot, director, poster, type, imdbID;
         self.poster = nil;
         self.type = nil;
         self.imdbID = nil;
+        self.image = nil;
     }
     return self;
 }

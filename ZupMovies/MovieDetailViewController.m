@@ -74,7 +74,9 @@ Movie *movie;
     [newMovie setValue: movie.title forKey: @"title"];
     [newMovie setValue: movie.genre forKey: @"genre"];
     [newMovie setValue: movie.actors forKey: @"actors"];
+    [newMovie setValue: movie.year forKey: @"year"];
     [newMovie setValue: movie.imdbID forKey: @"imdbID"];
+    [newMovie setValue: UIImageJPEGRepresentation(_image, 1) forKey:@"picture"];
     
     NSError *error;
     if ([context save:&error] == NO) {

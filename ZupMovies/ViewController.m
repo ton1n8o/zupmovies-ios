@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "AppDelegate.h"
 
 @interface ViewController ()
 
@@ -23,6 +24,7 @@ NSString *searchTerm;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,15 +70,7 @@ NSString *searchTerm;
             NSLog(@"ERROR: %@", error);
             
         } else {
-            
-            _data = [self parseData: data];
-            NSLog(@"Movies: %tu", [_data count]);
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // code here
-                [self.tableView reloadData];
-            });
-            
+            [self updateTableView:[self parseData: data]];
         }
         
         
@@ -101,6 +95,16 @@ NSString *searchTerm;
     dispatch_async(dispatch_get_main_queue(), ^{
         // code here
         [self presentViewController:alertController animated:YES completion:nil];
+    });
+}
+
+- (void) updateTableView:(NSArray *)movies
+{
+    _data = movies;
+    NSLog(@"Movies: %tu", [_data count]);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // code here
+        [self.tableView reloadData];
     });
 }
 
