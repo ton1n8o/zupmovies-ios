@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import "Movie.h"
+#import <UIKit/UIKit.h>
 
 @protocol MovieDelegate
 
@@ -16,7 +17,7 @@
 
 @end
 
-@interface MovieDetailViewController : UIViewController
+@interface MovieDetailViewController : UIViewController <UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) IBOutlet UINavigationItem *navigationItem;
 
