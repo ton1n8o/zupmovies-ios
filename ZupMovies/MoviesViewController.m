@@ -62,7 +62,25 @@ NSMutableArray *_movies;
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return  1;
+    if (_movies && _movies.count > 0) {
+        tableView.backgroundView = nil;
+        return 1;
+    }
+    
+    // Display a message when the table is empty
+    UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    
+    messageLabel.text = @"Não há filmes salvos...";
+    messageLabel.textColor = [UIColor blackColor];
+    messageLabel.numberOfLines = 0;
+    messageLabel.textAlignment = NSTextAlignmentCenter;
+    messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
+    [messageLabel sizeToFit];
+    
+    tableView.backgroundView = messageLabel;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    return  0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tblView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,14 +98,14 @@ NSMutableArray *_movies;
     ((UILabel*) [cell viewWithTag: 2]).text = movie.title;
     ((UILabel*) [cell viewWithTag: 3]).text = movie.year;
     ((UILabel*) [cell viewWithTag: 4]).text = movie.genre;
+    ((UILabel*) [cell viewWithTag: 6]).text = movie.imdbRaiting;
+    
+    if (movie.imdbRaiting.length == 0) {
+        ((UILabel*) [cell viewWithTag: 7]).text = @"";
+    }
     
     UIImageView *imgView = (UIImageView*) [cell viewWithTag: 1];
     imgView.image = movie.image;
-    
-//    [imgView sd_setImageWithURL:
-//     [NSURL URLWithString:movie.poster]
-//               placeholderImage:[UIImage
-//                                 imageNamed:@"zup_movies.png"]];
     
     return cell;
 }
@@ -177,6 +195,7 @@ NSMutableArray *_movies;
             movie.year = [obj valueForKey:@"year"];
             movie.actors = [obj valueForKey:@"actors"];
             movie.imdbID = [obj valueForKey:@"imdbID"];
+            movie.imdbRaiting = [obj valueForKey:@"imdbRaiting"];
             movie.image = [UIImage imageWithData:[obj valueForKey:@"picture"]];
             
             [movies addObject:movie];

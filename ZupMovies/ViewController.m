@@ -14,20 +14,44 @@
 
 @interface ViewController ()
 
+@property (nonatomic) Reachability *hostReachability;
+
 @end
 
 @implementation ViewController
 
 @synthesize modalViewController;
 
+#pragma mark - Variables
+
 NSMutableArray *_data;
 NSString *searchTerm;
 NSInteger page = 0;
 NSString *searchTerm;
+BOOL isConnected;
+BOOL showAlertNoConnetion;
+
+#pragma mark - ViewController Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    self.hostReachability = [Reachability reachabilityWithHostName:SERVER_PATH_TEST_CONNECTION];
+    [self.hostReachability startNotifier];
+    
+}
+
+- (void) reachabilityChanged:(NSNotification *)note
+{
+    Reachability* curReach = [note object];
+   
+    NetworkStatus netStatus = [curReach currentReachabilityStatus];
+    
+    isConnected = (netStatus != NotReachable);
+    
+    [self showAlertNoConnection];
     
 }
 
@@ -56,6 +80,27 @@ NSString *searchTerm;
 }
 
 #pragma mark - Helpers
+
+-(void)showAlertNoConnection
+{
+    if (!isConnected && !showAlertNoConnetion) {
+        showAlertNoConnetion = YES;
+        
+        [self showAlertDialogWithMessage: @"Favor conectar a internet para realizar buscas."
+                                   title: @"Informação"
+                                okAction: [UIAlertAction actionWithTitle:@"OK"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction * action) {
+                                                                     showAlertNoConnetion = NO;
+                                                                 }]];
+    }
+    
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
+}
 
 - (void) showAlertDialogWithMessage:(NSString*)msg title:(NSString*) title okAction:(UIAlertAction*)action
 {
@@ -163,6 +208,12 @@ NSString *searchTerm;
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    
+    if (!isConnected) {
+        [self showAlertNoConnection];
+        return;
+    }
+    
     [self search:searchBar.text];
     
     // remove focus
@@ -243,7 +294,15 @@ NSString *searchTerm;
                                                                       style:UIAlertActionStyleDefault
                                                                     handler:nil]];
         } else {
-            [self updateTableView:[self parseData: data]];
+            NSMutableArray *movies = [self parseData: data];
+            if (movies == nil || movies.count == 0) {
+                [self showAlertDialogWithMessage: @"Não foram encontrados filmes para o termo pesquisado."
+                                           title: nil
+                                        okAction: [UIAlertAction actionWithTitle:@"OK"
+                                                                          style:UIAlertActionStyleDefault
+                                                                        handler:nil]];
+            }
+            [self updateTableView:movies];
         }
         
     }];
@@ -252,6 +311,11 @@ NSString *searchTerm;
 
 - (void) loadNextPage
 {
+    
+    if (!isConnected) {
+        [self showAlertNoConnection];
+        return;
+    }
     
     [self showProgress:YES];
     

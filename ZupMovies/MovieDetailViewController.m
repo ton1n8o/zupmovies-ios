@@ -193,6 +193,7 @@ UIBarButtonItem *btnSaveTmp;
             [self.imageView setFrame:[[UIScreen mainScreen] bounds]];
         } completion:^(BOOL finished){
             isFullScreen = true;
+            [self setNeedsStatusBarAppearanceUpdate];
         }];
         
         return;
@@ -202,8 +203,8 @@ UIBarButtonItem *btnSaveTmp;
             [self.imageView setFrame:prevFrame];
         } completion:^(BOOL finished){
             isFullScreen = false;
+            [self setNeedsStatusBarAppearanceUpdate];
         }];
-        
         return;
     }
 }
@@ -211,6 +212,10 @@ UIBarButtonItem *btnSaveTmp;
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return isFullScreen;
 }
 
 -(void)showProgress:(BOOL)show

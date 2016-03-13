@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "Movie.h"
 #import "MovieDetailViewController.h"
+#import "Reachability.h"
 
 @interface ViewController : UIViewController<NSURLConnectionDataDelegate, UITableViewDataSource,
 UITableViewDelegate, UISearchBarDelegate>
