@@ -291,7 +291,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="yWd-ET-RGi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -300,7 +300,17 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="TRy-uv-tRM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actors" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awR-1d-tIp">
+                                <rect key="frame" x="10" y="229" width="94" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="AAQ-OM-PwX"/>
+                                    <constraint firstAttribute="width" constant="94" id="ubU-aG-6Kx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -322,8 +332,7 @@
                                 <size key="shadowOffset" width="-1" height="-1"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="hTX-Zq-pu7">
-                                <rect key="frame" x="7" y="218" width="586" height="382"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="7" y="280" width="586" height="320"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -345,6 +354,15 @@
                                     <constraint firstAttribute="height" constant="130" id="ibC-5R-Xu8"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actor 1, Actor 2 Actor 3" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnU-j0-7dC">
+                                <rect key="frame" x="20" y="253" width="573" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="zLA-tg-b4r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -353,6 +371,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="KuD-qV-rwl" secondAttribute="trailing" constant="-15" id="4XO-IR-IFY"/>
                             <constraint firstItem="f1T-4Y-ZMS" firstAttribute="top" secondItem="xQs-Bu-a7f" secondAttribute="bottom" id="72p-e2-Yrc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hK4-iD-3HC" secondAttribute="trailing" constant="-15" id="8gB-Fw-Jah"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NnU-j0-7dC" secondAttribute="trailing" constant="-13" id="A6n-fM-Idb"/>
+                            <constraint firstItem="NnU-j0-7dC" firstAttribute="top" secondItem="awR-1d-tIp" secondAttribute="bottom" constant="2" id="Ayc-n3-Iqc"/>
+                            <constraint firstItem="awR-1d-tIp" firstAttribute="top" secondItem="oa2-2x-kGE" secondAttribute="bottom" constant="19" id="C4m-YR-1pc"/>
                             <constraint firstItem="Wa1-6v-w9d" firstAttribute="bottom" secondItem="f1T-4Y-ZMS" secondAttribute="bottom" id="HOd-gd-liC"/>
                             <constraint firstItem="ldX-s1-bK5" firstAttribute="trailing" secondItem="mOK-XI-nvr" secondAttribute="trailing" id="I1H-9P-n2f"/>
                             <constraint firstItem="mOK-XI-nvr" firstAttribute="top" secondItem="xQs-Bu-a7f" secondAttribute="bottom" constant="44" id="Ifa-i4-j4a"/>
@@ -368,6 +389,7 @@
                             <constraint firstItem="oa2-2x-kGE" firstAttribute="leading" secondItem="mOK-XI-nvr" secondAttribute="trailing" constant="11" id="YgF-hL-MaI"/>
                             <constraint firstItem="ldX-s1-bK5" firstAttribute="baseline" secondItem="1Uw-5Z-NHZ" secondAttribute="baseline" id="Yw6-Bh-zub"/>
                             <constraint firstItem="KuD-qV-rwl" firstAttribute="leading" secondItem="mOK-XI-nvr" secondAttribute="trailing" constant="11" id="aEE-h3-NRK"/>
+                            <constraint firstItem="awR-1d-tIp" firstAttribute="leading" secondItem="K51-D1-htf" secondAttribute="leadingMargin" constant="-10" id="aEJ-CZ-72V"/>
                             <constraint firstItem="Wa1-6v-w9d" firstAttribute="top" secondItem="K51-D1-htf" secondAttribute="top" id="atU-5O-DgP"/>
                             <constraint firstItem="f1T-4Y-ZMS" firstAttribute="centerX" secondItem="K51-D1-htf" secondAttribute="centerX" id="b4U-Cf-InP"/>
                             <constraint firstItem="P8V-aC-RdW" firstAttribute="leading" secondItem="mOK-XI-nvr" secondAttribute="trailing" constant="4" id="giK-ny-GAu"/>
@@ -375,11 +397,12 @@
                             <constraint firstItem="ldX-s1-bK5" firstAttribute="top" secondItem="1Uw-5Z-NHZ" secondAttribute="top" id="hd8-La-WU3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wa1-6v-w9d" secondAttribute="trailing" constant="-20" id="kiJ-Ow-M2P"/>
                             <constraint firstItem="dhy-9I-Jwj" firstAttribute="top" secondItem="f1T-4Y-ZMS" secondAttribute="bottom" id="knT-Nu-Su5"/>
+                            <constraint firstItem="hTX-Zq-pu7" firstAttribute="top" secondItem="NnU-j0-7dC" secondAttribute="bottom" constant="1" id="qTc-R9-N5A"/>
                             <constraint firstItem="hTX-Zq-pu7" firstAttribute="centerX" secondItem="f1T-4Y-ZMS" secondAttribute="centerX" id="s53-3w-MYy"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="NnU-j0-7dC" secondAttribute="leading" id="sFD-aC-0Yl"/>
                             <constraint firstItem="hTX-Zq-pu7" firstAttribute="leading" secondItem="K51-D1-htf" secondAttribute="leadingMargin" constant="-13" id="tPX-5U-iyI"/>
                             <constraint firstItem="f1T-4Y-ZMS" firstAttribute="width" secondItem="K51-D1-htf" secondAttribute="width" id="tg2-rU-dqm"/>
                             <constraint firstItem="1Uw-5Z-NHZ" firstAttribute="leading" secondItem="K51-D1-htf" secondAttribute="leadingMargin" constant="-20" id="uLU-lW-02d"/>
-                            <constraint firstItem="hTX-Zq-pu7" firstAttribute="top" secondItem="oa2-2x-kGE" secondAttribute="bottom" constant="8" symbolic="YES" id="w26-ur-G40"/>
                             <constraint firstItem="1Uw-5Z-NHZ" firstAttribute="top" secondItem="mOK-XI-nvr" secondAttribute="bottom" constant="1" id="xh6-re-1u2"/>
                             <constraint firstItem="ldX-s1-bK5" firstAttribute="leading" secondItem="1Uw-5Z-NHZ" secondAttribute="trailing" constant="1" id="yBY-ht-gNJ"/>
                             <constraint firstItem="vhL-oP-hsw" firstAttribute="top" secondItem="dhy-9I-Jwj" secondAttribute="bottom" constant="1" id="yO8-Rb-QUJ"/>
@@ -393,6 +416,8 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="mOK-XI-nvr" id="REt-33-Hvg"/>
+                        <outlet property="lblActors" destination="NnU-j0-7dC" id="9dj-na-fDX"/>
+                        <outlet property="lblActorsTitle" destination="awR-1d-tIp" id="Kc0-rc-STE"/>
                         <outlet property="lblDirector" destination="hK4-iD-3HC" id="OeQ-PK-AzL"/>
                         <outlet property="lblDirectorTitle" destination="vhL-oP-hsw" id="ms4-IN-jGB"/>
                         <outlet property="lblGenre" destination="KuD-qV-rwl" id="Z2f-Xu-PGX"/>

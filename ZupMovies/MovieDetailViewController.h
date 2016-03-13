@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblDirectorTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblGenreTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblOutOfTen;
+@property (weak, nonatomic) IBOutlet UILabel *lblActorsTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblActors;
 
 @property (weak, nonatomic) UIImage *image;
 @property (retain, nonatomic) id delegate;

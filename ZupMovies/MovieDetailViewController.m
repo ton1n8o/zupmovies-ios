@@ -134,6 +134,11 @@ UIBarButtonItem *btnSaveTmp;
             self.lblYear.text = movieLoaded.year;
             self.textViewPlot.text = movieLoaded.plot;
             
+            self.lblActors.text = movieLoaded.actors;
+            if (movieLoaded.actors.length == 0) {
+                self.lblActorsTitle.text = @"";
+            }
+            
             self.lblDirector.text = movieLoaded.director;
             if (movieLoaded.director.length == 0) {
                 self.lblDirectorTitle.text = @"";
