@@ -57,6 +57,7 @@ UIBarButtonItem *btnSaveTmp;
     if (hideSaveButton) {
         self.navigationItem.rightBarButtonItem = nil;
     }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -150,6 +151,11 @@ UIBarButtonItem *btnSaveTmp;
         
         return;
     }
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - Actions
