@@ -20,9 +20,9 @@
 
 @synthesize modalViewController;
 
-//NSMutableData *_responseData;
-NSArray *_data;
-NSTimer *searchDelayer;
+NSMutableArray *_data;
+NSString *searchTerm;
+NSInteger page = 0;
 NSString *searchTerm;
 
 - (void)viewDidLoad {
@@ -74,12 +74,11 @@ NSString *searchTerm;
     });
 }
 
-- (void) updateTableView:(NSArray *)movies
+- (void) updateTableView:(NSMutableArray *)movies
 {
     _data = movies;
     NSLog(@"Movies: %tu", [_data count]);
     dispatch_async(dispatch_get_main_queue(), ^{
-        // code here
         [self.tableView reloadData];
     });
 }
@@ -88,11 +87,25 @@ NSString *searchTerm;
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (show) {
+            
+            KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
+            configuration.fullScreen = NO;
+            
+            [KVNProgress setConfiguration:configuration];
+            
             [KVNProgress show];
         } else {
             [KVNProgress dismiss];
         }
     });
+}
+
+-(NSString *)buildUrl:(NSString*)search
+{
+    page++;
+    NSString * url = [NSString stringWithFormat:@"%@%@%@%@%@", SERVER_PATH, @"?s=", search, @"&page=", [@(page) stringValue]];
+    NSLog(@"URL: %@", url);
+    return [url stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
 }
 
 #pragma mark - UITableViewDelegate Delegate Methods
@@ -139,6 +152,15 @@ NSString *searchTerm;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    NSInteger currentOffset = scrollView.contentOffset.y;
+    NSInteger maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+    
+    if (maximumOffset - currentOffset <= -40) {
+        [self loadNextPage];
+    }
+}
+
 #pragma mark - UISearchControllerDelegate Delegate Methods
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -151,13 +173,8 @@ NSString *searchTerm;
 
 #pragma mark - Search
 
-- (void) requestWithTerm:(NSString*)searchTerm withCompletion:(void (^)(NSData *data, NSURLResponse *response, NSError *error)) handler
+- (void) requestWithTerm:(NSString*)url withCompletion:(void (^)(NSData *data, NSURLResponse *response, NSError *error)) handler
 {
-    
-    NSString *url = [NSString stringWithFormat:@"%@%@%@%@", SERVER_PATH, @"?s=", searchTerm, @"&page=1"];
-    
-    NSLog(@"URL: %@", url);
-    url = [url stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
@@ -170,7 +187,7 @@ NSString *searchTerm;
     
 }
 
-- (NSArray *) parseData:(NSData *) data
+- (NSMutableArray *) parseData:(NSData *) data
 {
     
     NSMutableArray* movies = [[NSMutableArray alloc] init];
@@ -199,12 +216,15 @@ NSString *searchTerm;
     return movies;
 }
 
-- (void) search:(NSString*)searchTerm
+- (void) search:(NSString*)search
 {
     
     [self showProgress:YES];
     
-    [self requestWithTerm:searchTerm withCompletion:^(NSData *data, NSURLResponse *response, NSError *error) {
+    page = 0; // first page
+    searchTerm = search; // new search term used.
+    
+    [self requestWithTerm:[self buildUrl:search] withCompletion:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         [self showProgress:NO];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -229,7 +249,77 @@ NSString *searchTerm;
         }
         
     }];
-    searchDelayer =  nil;
+    
+}
+
+- (void) loadNextPage
+{
+    
+    [self showProgress:YES];
+    
+    NSString *url = [self buildUrl:searchTerm];
+    
+    [self requestWithTerm:url withCompletion:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        // parser do json.
+        if (error != nil) {
+            
+            NSLog(@"Can't load next page! %@ %@, url:%@", error, [error localizedDescription], url);
+            
+            NSString *msg = @"Erro ao pesquisar filmes.";
+            if (error.code == NSURLErrorTimedOut) {
+                msg = @"Erro ao pesquisar filmes, server não está respondendo.";
+            }
+            
+            [self showAlertDialogWithMessage:msg
+                                       title:@"Erro"
+                                    okAction:[UIAlertAction actionWithTitle:@"OK"
+                                                                      style:UIAlertActionStyleDefault
+                                                                    handler:nil]];
+        } else {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                NSMutableArray *movies = [self parseData: data];
+                
+                if (movies && movies.count > 0) {
+                    
+                    [self.tableView beginUpdates];
+                    
+                    NSInteger startingRow =  _data.count;
+                    NSInteger scollToIndex = startingRow; //index to scroll
+                    
+                    [_data addObjectsFromArray:movies];
+                    NSInteger endingRow = _data.count; // last row
+                    
+                    NSMutableArray *indexPaths = [NSMutableArray array];
+                    
+                    for (; startingRow < endingRow; startingRow++) {
+                        [indexPaths addObject:[NSIndexPath indexPathForRow:startingRow inSection: 0]];
+                    }
+                    
+                    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation: UITableViewRowAnimationFade];
+                    
+                    [self.tableView endUpdates];
+                    
+                    [self.tableView scrollToRowAtIndexPath: [NSIndexPath indexPathForRow: scollToIndex-1 inSection:0]
+                                          atScrollPosition: UITableViewScrollPositionTop animated:YES];
+                    
+                } else {
+                    // no more movies
+                    [self showAlertDialogWithMessage:@"Não há mais filmes."
+                                               title:nil
+                                            okAction:nil];
+                }
+                
+            });
+        }
+        
+        [self showProgress:NO];
+        
+    }];
     
 }
 

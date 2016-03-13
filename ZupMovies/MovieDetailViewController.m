@@ -39,7 +39,7 @@ UIBarButtonItem *btnSaveTmp;
     [self.imageView setUserInteractionEnabled:YES];
     [self.imageView addGestureRecognizer:tap];
     
-    [self setUpProgress];
+    [self showProgress:YES];
     
     NSString *imdbID = self.movie.imdbID;
     
@@ -148,7 +148,7 @@ UIBarButtonItem *btnSaveTmp;
             
         }
         
-        [self dismissProgress];
+        [self showProgress:NO];
     });
     
 }
@@ -196,21 +196,21 @@ UIBarButtonItem *btnSaveTmp;
     return UIStatusBarStyleLightContent;
 }
 
--(void)setUpProgress
+-(void)showProgress:(BOOL)show
 {
-    KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
-    configuration.fullScreen = YES;
-    
-    [KVNProgress setConfiguration:configuration];
-    [KVNProgress show];
-}
-
--(void)dismissProgress
-{
-    // Dismiss
-    [KVNProgress dismissWithCompletion:^{
-        // Things you want to do after the HUD is gone.
-    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (show) {
+            
+            KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
+            configuration.fullScreen = YES;
+            
+            [KVNProgress setConfiguration:configuration];
+            
+            [KVNProgress show];
+        } else {
+            [KVNProgress dismiss];
+        }
+    });
 }
 
 #pragma mark - Actions
