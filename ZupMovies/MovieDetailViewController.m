@@ -37,6 +37,8 @@ UIBarButtonItem *btnSaveTmp;
     [self.imageView setUserInteractionEnabled:YES];
     [self.imageView addGestureRecognizer:tap];
     
+    self.imageView.image = self.image;
+    
     NSString *imdbID = self.movie.imdbID;
     
     // update view
@@ -99,8 +101,6 @@ UIBarButtonItem *btnSaveTmp;
         [self setMovie:movieLoaded];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            
-            self.imageView.image = self.image;
             
             self.lblMovieTitle.text = movieLoaded.title;
             self.lblGenre.text = movieLoaded.genre;
