@@ -136,7 +136,7 @@
             </objects>
             <point key="canvasLocation" x="1221" y="-284"/>
         </scene>
-        <!--Busca-->
+        <!--Search-->
         <scene sceneID="dRd-Qg-cdA">
             <objects>
                 <viewController id="f2R-oD-xA6" customClass="ViewController" sceneMemberID="viewController">
@@ -144,7 +144,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" text="cars" placeholder="Pesquisar" id="4MM-qD-2sd">
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Search" id="4MM-qD-2sd">
                             <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -219,7 +219,7 @@
                             <outlet property="delegate" destination="f2R-oD-xA6" id="8Uq-Xy-5r4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Busca" id="bVh-hd-hDE"/>
+                    <navigationItem key="navigationItem" title="Search" id="bVh-hd-hDE"/>
                     <connections>
                         <outlet property="tableView" destination="cil-wV-SQj" id="BlA-45-2hW"/>
                     </connections>
@@ -254,7 +254,7 @@
                                 </constraints>
                                 <color key="barTintColor" red="0.58431372550000005" green="0.72156862749999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem title="Detalhes" id="yMR-aV-AoT">
+                                    <navigationItem title="Movie Details" id="yMR-aV-AoT">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0YF-0Q-408">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <connections>
@@ -476,6 +476,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ij7-Dz-vl1"/>
+        <segue reference="A50-rC-Y6J"/>
     </inferredMetricsTieBreakers>
 </document>
