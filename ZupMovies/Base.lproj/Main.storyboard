@@ -350,6 +350,7 @@
                         <outlet property="lblScore" destination="1Uw-5Z-NHZ" id="NNJ-on-ByC"/>
                         <outlet property="lblYear" destination="oa2-2x-kGE" id="V8D-am-wgV"/>
                         <outlet property="navigationItem" destination="yMR-aV-AoT" id="PYE-DP-F44"/>
+                        <outlet property="textViewPlot" destination="Jgc-Y8-c1K" id="30F-5j-Yzk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIR-Sp-RaH" userLabel="First Responder" sceneMemberID="firstResponder"/>

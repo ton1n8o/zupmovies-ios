@@ -101,17 +101,12 @@ UIBarButtonItem *btnSaveTmp;
             
             self.imageView.image = self.image;
             
-            [self.lblMovieTitle setNumberOfLines:0];
-            [self.lblMovieTitle sizeToFit];
             self.lblMovieTitle.text = movieLoaded.title;
-            
-            
-            
-            
             self.lblGenre.text = movieLoaded.genre;
             self.lblYear.text = movieLoaded.year;
             self.lblDirector.text = movieLoaded.director;
             self.lblScore.text = movieLoaded.imdbRaiting;
+            self.textViewPlot.text = movieLoaded.plot;
 
         });
         
@@ -132,22 +127,27 @@ UIBarButtonItem *btnSaveTmp;
     return shouldReceiveTouch;
 }
 
--(void)imgToFullScreen{
+-(void)imgToFullScreen {
+    
     if (!isFullScreen) {
-        [UIView animateWithDuration:0.5 delay:0 options:0 animations:^{
+        
+        [UIView animateWithDuration:0.4 delay:0 options:0 animations:^{
             //save previous frame
             prevFrame = self.imageView.frame;
             [self.imageView setFrame:[[UIScreen mainScreen] bounds]];
-        }completion:^(BOOL finished){
+        } completion:^(BOOL finished){
             isFullScreen = true;
         }];
+        
         return;
     } else {
-        [UIView animateWithDuration:0.5 delay:0 options:0 animations:^{
+        
+        [UIView animateWithDuration:0.4 delay:0 options:0 animations:^{
             [self.imageView setFrame:prevFrame];
-        }completion:^(BOOL finished){
+        } completion:^(BOOL finished){
             isFullScreen = false;
         }];
+        
         return;
     }
 }

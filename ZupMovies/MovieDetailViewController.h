@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblDirector;
 @property (weak, nonatomic) IBOutlet UILabel *lblYear;
 @property (weak, nonatomic) IBOutlet UILabel *lblScore;
+@property (weak, nonatomic) IBOutlet UITextView *textViewPlot;
 
 @property (weak, nonatomic) UIImage *image;
 @property (retain, nonatomic) id delegate;
