@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>KVNProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ZupMovies.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2E19A3AF38ED9C7EBEAAB93C68232531</key>
+		<key>06B2232CE73059846F04E5C3DFEE0D38</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1AB0320AF3E4F6B9EBF084CC3594175</key>
+		<key>14F141D69C7BB059F1461D6CD5099148</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5C915ABC3ACBE8A0E2FE8F21B89C2C11</key>
 		<dict>
 			<key>primary</key>
 			<true/>

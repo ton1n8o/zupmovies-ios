@@ -6,7 +6,9 @@
 //  Copyright © 2016 Antonio Carlos Silva. All rights reserved.
 //
 
+#import <KVNProgress/KVNProgress.h>
 #import "MovieDetailViewController.h"
+#import "Constants.h"
 
 @interface MovieDetailViewController ()
 
@@ -37,7 +39,7 @@ UIBarButtonItem *btnSaveTmp;
     [self.imageView setUserInteractionEnabled:YES];
     [self.imageView addGestureRecognizer:tap];
     
-    self.imageView.image = self.image;
+    [self setUpProgress];
     
     NSString *imdbID = self.movie.imdbID;
     
@@ -51,7 +53,31 @@ UIBarButtonItem *btnSaveTmp;
         [self loadMovieDetails:imdbID withCompletion:^(NSData *data, NSURLResponse *response, NSError *error) {
             
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-            [self showMovieData:[self parseData:data]];
+            
+            if (error) {
+               
+                [self showMovieData:nil]; // clear fields
+                
+                [KVNProgress dismiss];
+                
+                NSLog(@"Can't load movie data! %@ %@", error, [error localizedDescription]);
+                
+                NSString *msg = @"Erro ao carregar dados do filme.";
+                if (error.code == NSURLErrorTimedOut) {
+                    msg = @"Erro ao carregar dados do filme, server não está respondendo.";
+                }
+                
+                [self showAlertDialogWithMessage:msg
+                                           title:@"Erro"
+                                        okAction:[UIAlertAction actionWithTitle:@"OK"
+                                                                          style:UIAlertActionStyleDefault
+                                                                        handler:^(UIAlertAction * action) {
+                                                                            [self dismissViewControllerAnimated:YES completion:nil];
+                                                                        }]];
+                
+            } else {
+                [self showMovieData:[self parseData:data]];
+            }
             
         }];
     }
@@ -96,11 +122,13 @@ UIBarButtonItem *btnSaveTmp;
 
 -(void)showMovieData:(Movie*) movieLoaded
 {
-    if (movieLoaded) {
+    dispatch_async(dispatch_get_main_queue(), ^{
         
-        [self setMovie:movieLoaded];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
+        if (movieLoaded) {
+            
+            self.imageView.image = self.image;
+            
+            [self setMovie:movieLoaded];
             
             self.lblMovieTitle.text = movieLoaded.title;
             self.lblGenre.text = movieLoaded.genre;
@@ -108,10 +136,20 @@ UIBarButtonItem *btnSaveTmp;
             self.lblDirector.text = movieLoaded.director;
             self.lblScore.text = movieLoaded.imdbRaiting;
             self.textViewPlot.text = movieLoaded.plot;
-
-        });
+            
+        } else {
+            
+            self.lblMovieTitle.text = @"";
+            self.lblGenre.text = @"";
+            self.lblYear.text = @"";
+            self.lblDirector.text = @"";
+            self.lblScore.text = @"";
+            self.textViewPlot.text = @"";
+            
+        }
         
-    }
+        [self dismissProgress];
+    });
     
 }
 
@@ -156,6 +194,23 @@ UIBarButtonItem *btnSaveTmp;
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+-(void)setUpProgress
+{
+    KVNProgressConfiguration *configuration = [[KVNProgressConfiguration alloc] init];
+    configuration.fullScreen = YES;
+    
+    [KVNProgress setConfiguration:configuration];
+    [KVNProgress show];
+}
+
+-(void)dismissProgress
+{
+    // Dismiss
+    [KVNProgress dismissWithCompletion:^{
+        // Things you want to do after the HUD is gone.
+    }];
 }
 
 #pragma mark - Actions
@@ -261,7 +316,7 @@ UIBarButtonItem *btnSaveTmp;
     // Send a synchronous request
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                            timeoutInterval:20.0];
+                                            timeoutInterval:7.0];
     
     [[[NSURLSession sharedSession] dataTaskWithRequest:urlRequest completionHandler:handler] resume];
     

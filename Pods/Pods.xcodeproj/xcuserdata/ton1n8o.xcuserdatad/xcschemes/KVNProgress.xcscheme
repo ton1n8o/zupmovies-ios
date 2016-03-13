@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '631AC5EB607E50B530904D29'
-               BlueprintName = 'SDWebImage'
+               BlueprintIdentifier = '6CB91EB75F557926B4B0A9B2'
+               BlueprintName = 'KVNProgress'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libSDWebImage.a'>
+               BuildableName = 'libKVNProgress.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

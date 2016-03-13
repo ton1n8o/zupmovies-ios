@@ -6,9 +6,11 @@
 //  Copyright © 2016 Antonio Carlos Silva. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <KVNProgress/KVNProgress.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ViewController.h"
 #import "AppDelegate.h"
+#import "Constants.h"
 
 @interface ViewController ()
 
@@ -82,6 +84,17 @@ NSString *searchTerm;
     });
 }
 
+-(void)showProgress:(BOOL)show
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (show) {
+            [KVNProgress show];
+        } else {
+            [KVNProgress dismiss];
+        }
+    });
+}
+
 #pragma mark - UITableViewDelegate Delegate Methods
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -151,7 +164,7 @@ NSString *searchTerm;
     // Send a synchronous request
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                            timeoutInterval:20.0];
+                                            timeoutInterval:TIME_OUT];
     
     [[[NSURLSession sharedSession] dataTaskWithRequest:urlRequest completionHandler:handler] resume];
     
@@ -189,25 +202,31 @@ NSString *searchTerm;
 - (void) search:(NSString*)searchTerm
 {
     
+    [self showProgress:YES];
+    
     [self requestWithTerm:searchTerm withCompletion:^(NSData *data, NSURLResponse *response, NSError *error) {
         
+        [self showProgress:NO];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
         // parser do json.
         if (error != nil) {
             
-            [self showAlertDialogWithMessage:@"Erro ao carregar dados do filme."
+            NSLog(@"Can't load movie data! %@ %@", error, [error localizedDescription]);
+            
+            NSString *msg = @"Erro ao carregar dados do filme.";
+            if (error.code == NSURLErrorTimedOut) {
+                msg = @"Erro ao carregar dados do filme, server não está respondendo.";
+            }
+            
+            [self showAlertDialogWithMessage:msg
                                        title:@"Erro"
                                     okAction:[UIAlertAction actionWithTitle:@"OK"
                                                                       style:UIAlertActionStyleDefault
                                                                     handler:nil]];
-            
-            NSLog(@"ERROR: %@", error);
-            
         } else {
             [self updateTableView:[self parseData: data]];
         }
-        
         
     }];
     searchDelayer =  nil;

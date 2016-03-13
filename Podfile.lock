@@ -1,12 +1,15 @@
 PODS:
+  - KVNProgress (2.2.4)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
 
 DEPENDENCIES:
+  - KVNProgress (~> 2.2)
   - SDWebImage (~> 3.7)
 
 SPEC CHECKSUMS:
+  KVNProgress: 541edcea5a1fef592aceac8d791a410d38cb499d
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
 
 COCOAPODS: 0.39.0

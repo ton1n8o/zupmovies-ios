@@ -4,7 +4,8 @@
 # use_frameworks!
 
 target 'ZupMovies' do
-	platform :ios, '6.1'
+	platform :ios, '7.0'
 	pod 'SDWebImage', '~>3.7' 
+	pod 'KVNProgress', '~> 2.2'
 end
 
