@@ -60,7 +60,6 @@ NSString *searchTerm;
 - (void) showAlertDialogWithMessage:(NSString*)msg title:(NSString*) title okAction:(UIAlertAction*)action
 {
     
-    NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>> ");
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle: title
                                           message: msg
@@ -310,8 +309,10 @@ NSString *searchTerm;
                 } else {
                     // no more movies
                     [self showAlertDialogWithMessage:@"Não há mais filmes."
-                                               title:nil
-                                            okAction:nil];
+                                               title:@"Erro"
+                                            okAction:[UIAlertAction actionWithTitle:@"OK"
+                                                                              style:UIAlertActionStyleDefault
+                                                                            handler:nil]];
                 }
                 
             });

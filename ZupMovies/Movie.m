@@ -63,16 +63,32 @@ imdbRaiting, year, plot, director, poster, type, imdbID, image;
 {
     Movie *m = [[Movie alloc] init];
     
+    NSString *NA = @"N/A";
+    NSString *value = @"";
+    
     [m setTitle: dict[@"Title"]];
     [m setActors: dict[@"Actors"]];
-    [m setYear: dict[@"Year"]];
-    [m setPlot: dict[@"Plot"]];
-    [m setGenre: dict[@"Genre"]];
-    [m setImdbRaiting: dict[@"imdbRating"]];
-    [m setDirector: dict[@"Director"]];
-    [m setPoster: dict[@"Poster"]];
-    [m setType: dict[@"Type"]];
+    
+    value = dict[@"Year"];
+    [m setYear:[value isEqualToString:NA] ? @"" : value];
+
+    value = dict[@"Plot"];
+    [m setPlot: [value isEqualToString:NA] ? @"" : value];
+    
+    value = dict[@"Genre"];
+    [m setGenre: [value isEqualToString:NA] ? @"" : value];
+    
+    value = dict[@"imdbRating"];
+    [m setImdbRaiting: [value isEqualToString:NA] ? @"" : value];
+    
+    value = dict[@"Director"];
+    [m setDirector: [value isEqualToString:NA] ? @"" : value];
+    
+    value = dict[@"Type"];
+    [m setType: [value isEqualToString:NA] ? @"" : value];
+    
     [m setImdbID:dict[@"imdbID"]];
+    [m setPoster: dict[@"Poster"]];
     
     return m;
 }

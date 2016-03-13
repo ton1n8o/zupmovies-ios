@@ -394,8 +394,11 @@
                     <connections>
                         <outlet property="imageView" destination="mOK-XI-nvr" id="REt-33-Hvg"/>
                         <outlet property="lblDirector" destination="hK4-iD-3HC" id="OeQ-PK-AzL"/>
+                        <outlet property="lblDirectorTitle" destination="vhL-oP-hsw" id="ms4-IN-jGB"/>
                         <outlet property="lblGenre" destination="KuD-qV-rwl" id="Z2f-Xu-PGX"/>
+                        <outlet property="lblGenreTitle" destination="P8V-aC-RdW" id="p97-1A-qfF"/>
                         <outlet property="lblMovieTitle" destination="dhy-9I-Jwj" id="kPy-dr-k4G"/>
+                        <outlet property="lblOutOfTen" destination="ldX-s1-bK5" id="rez-Rg-Qwq"/>
                         <outlet property="lblScore" destination="1Uw-5Z-NHZ" id="NNJ-on-ByC"/>
                         <outlet property="lblYear" destination="oa2-2x-kGE" id="V8D-am-wgV"/>
                         <outlet property="navigationItem" destination="yMR-aV-AoT" id="PYE-DP-F44"/>

@@ -131,11 +131,23 @@ UIBarButtonItem *btnSaveTmp;
             [self setMovie:movieLoaded];
             
             self.lblMovieTitle.text = movieLoaded.title;
-            self.lblGenre.text = movieLoaded.genre;
             self.lblYear.text = movieLoaded.year;
-            self.lblDirector.text = movieLoaded.director;
-            self.lblScore.text = movieLoaded.imdbRaiting;
             self.textViewPlot.text = movieLoaded.plot;
+            
+            self.lblDirector.text = movieLoaded.director;
+            if (movieLoaded.director.length == 0) {
+                self.lblDirectorTitle.text = @"";
+            }
+            
+            self.lblGenre.text = movieLoaded.genre;
+            if (movieLoaded.genre.length == 0) {
+                self.lblGenreTitle.text = @"";
+            }
+            
+            self.lblScore.text = movieLoaded.imdbRaiting;
+            if (movieLoaded.imdbRaiting.length == 0) {
+                self.lblOutOfTen.text = @"";
+            }
             
         } else {
             
