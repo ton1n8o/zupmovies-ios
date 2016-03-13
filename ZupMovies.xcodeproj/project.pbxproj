@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02590D891C94608600453A97 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02590D881C94608600453A97 /* MoviesViewController.m */; };
+		02590D8E1C94D94D00453A97 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 02590D8D1C94D94D00453A97 /* star.png */; };
 		029B90B41C8C2D8100434B76 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90B31C8C2D8100434B76 /* main.m */; };
 		029B90B71C8C2D8100434B76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90B61C8C2D8100434B76 /* AppDelegate.m */; };
 		029B90BA1C8C2D8100434B76 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90B91C8C2D8100434B76 /* ViewController.m */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		02590D871C94608600453A97 /* MoviesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
 		02590D881C94608600453A97 /* MoviesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
+		02590D8D1C94D94D00453A97 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		029B90AF1C8C2D8100434B76 /* ZupMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZupMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		029B90B31C8C2D8100434B76 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		029B90B51C8C2D8100434B76 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		02E780211C90684400B57648 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				02590D8D1C94D94D00453A97 /* star.png */,
 				02E780221C9068D400B57648 /* zup_movies.png */,
 			);
 			name = Images;
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				029B90C51C8C2D8100434B76 /* LaunchScreen.storyboard in Resources */,
+				02590D8E1C94D94D00453A97 /* star.png in Resources */,
 				029B90C21C8C2D8100434B76 /* Assets.xcassets in Resources */,
 				02E780231C9068D400B57648 /* zup_movies.png in Resources */,
 				029B90BD1C8C2D8100434B76 /* Main.storyboard in Resources */,

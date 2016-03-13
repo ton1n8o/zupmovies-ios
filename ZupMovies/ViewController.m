@@ -41,18 +41,15 @@ NSString *searchTerm;
     if ([segue.identifier isEqualToString:@"showMovieDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
-        MovieDetailViewController *md = segue.destinationViewController;
+        MovieDetailViewController *view = segue.destinationViewController;
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         
-        Movie *movie = [_data objectAtIndex:indexPath.row];
-        
         UIImageView *imageView = [cell viewWithTag:1];
-        md.image = imageView.image;
-        md.movieTitle = movie.title;
-        md.imdbId = movie.imdbID;
+        view.image = imageView.image;
+        view.movie = [_data objectAtIndex:indexPath.row];
         
         // referência ao delegate para atualziar a tela quando criar/excluir um filme
-        md.delegate = self.moviesViewController;
+        view.delegate = self.moviesViewController;
     }
 }
 

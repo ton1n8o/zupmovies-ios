@@ -7,7 +7,6 @@
 //
 
 #import "MovieDetailViewController.h"
-#import "Movie.h"
 
 @interface MovieDetailViewController ()
 
@@ -15,39 +14,39 @@
 
 @implementation MovieDetailViewController
 
-@synthesize imdbId, movieTitle, navigationItem, hideSaveButton;
+@synthesize hideSaveButton, movie;
 
-Movie *movie;
 UIBarButtonItem *btnSaveTmp;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // update view
-    self.imageView.image = self.image;
-    self.lblMovieTitle.text = self.movieTitle;
+    NSString *imdbID = self.movie.imdbID;
     
-    [self loadMovieDetails:self.imdbId withCompletion:^(NSData *data, NSURLResponse *response, NSError *error) {
+    // update view
+    movie = [self findMovie:movie.imdbID];
+    
+    if (movie) {
+        [self showMovieData:movie];
+    } else {
         
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        movie = [self parseData:data];
-        
-        if (movie) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // code here
-                self.lblGenre.text = movie.genre;
-                
-            });
+        [self loadMovieDetails:imdbID withCompletion:^(NSData *data, NSURLResponse *response, NSError *error) {
             
-        }
-        
-    }];
-   
-    if (hideSaveButton) {
-       self.navigationItem.rightBarButtonItem = nil; 
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            [self showMovieData:[self parseData:data]];
+            
+        }];
     }
+    
+    if (hideSaveButton) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,6 +77,8 @@ UIBarButtonItem *btnSaveTmp;
     [newMovie setValue: movie.actors forKey: @"actors"];
     [newMovie setValue: movie.year forKey: @"year"];
     [newMovie setValue: movie.imdbID forKey: @"imdbID"];
+    [newMovie setValue: movie.director forKey: @"director"];
+    [newMovie setValue: movie.imdbRaiting forKey: @"imdbRaiting"];
     [newMovie setValue: UIImageJPEGRepresentation(_image, 1) forKey:@"picture"];
     
     NSError *error;
@@ -125,6 +126,9 @@ UIBarButtonItem *btnSaveTmp;
         movie.title = [matches valueForKey:@"title"];
         movie.genre = [matches valueForKey:@"genre"];
         movie.actors = [matches valueForKey:@"actors"];
+        movie.director = [matches valueForKey:@"director"];
+        movie.imdbRaiting = [matches valueForKey:@"imdbRaiting"];
+        movie.year = [matches valueForKey:@"year"];
         return  movie;
     }
 }
@@ -161,6 +165,34 @@ UIBarButtonItem *btnSaveTmp;
     return context;
 }
 
+-(void)showMovieData:(Movie*) movieLoaded
+{
+    if (movieLoaded) {
+        
+        [self setMovie:movieLoaded];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            self.imageView.image = self.image;
+            
+            [self.lblMovieTitle setNumberOfLines:0];
+            [self.lblMovieTitle sizeToFit];
+            self.lblMovieTitle.text = movieLoaded.title;
+            
+            
+            
+            
+            self.lblGenre.text = movieLoaded.genre;
+            self.lblYear.text = movieLoaded.year;
+            self.lblDirector.text = movieLoaded.director;
+            self.lblScore.text = movieLoaded.imdbRaiting;
+
+        });
+        
+    }
+    
+}
+
 #pragma mark - Search
 
 - (void) loadMovieDetails:(NSString*)movieImdbId withCompletion:(void (^)(NSData *data, NSURLResponse *response, NSError *error)) handler
@@ -194,7 +226,6 @@ UIBarButtonItem *btnSaveTmp;
             NSDictionary *dictData = (NSDictionary*) object;
             
             if (dictData && dictData.count > 0) {
-                
                 return [Movie parseDictionary:dictData];
             }
             

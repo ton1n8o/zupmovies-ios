@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import "Movie.h"
 
 @protocol MovieDelegate
 
@@ -19,19 +20,19 @@
 
 @property (strong, nonatomic) IBOutlet UINavigationItem *navigationItem;
 
-@property (weak, nonatomic) IBOutlet UILabel *lblGenre;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) UIImage *image;
-
+@property (weak, nonatomic) IBOutlet UILabel *lblGenre;
 @property (weak, nonatomic) IBOutlet UILabel *lblMovieTitle;
-@property (weak, nonatomic) NSString *movieTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblDirector;
+@property (weak, nonatomic) IBOutlet UILabel *lblYear;
+@property (weak, nonatomic) IBOutlet UILabel *lblScore;
 
-@property (weak, nonatomic) NSString *imdbId;
+@property (weak, nonatomic) UIImage *image;
 @property (retain, nonatomic) id delegate;
 @property (nonatomic) BOOL hideSaveButton;
+@property (strong, nonatomic) Movie *movie;
 
 - (IBAction)save:(id)sender;
-
 - (IBAction)cancel:(id)sender;
 
 @end

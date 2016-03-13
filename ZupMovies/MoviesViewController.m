@@ -42,9 +42,19 @@ NSMutableArray *_movies;
     if ([segue.identifier isEqualToString:@"segueAddMovie"]) {
         ViewController *view = segue.destinationViewController;
         view.moviesViewController = self;
+        
     } else if ([segue.identifier isEqualToString:@"showMovieDetailFromHome"]) {
+        
         MovieDetailViewController *view = segue.destinationViewController;
         view.hideSaveButton = YES;
+        
+        NSIndexPath *indexPath = [self.moviesTableView indexPathForSelectedRow];
+        
+        UITableViewCell *cell = [self.moviesTableView cellForRowAtIndexPath:indexPath];
+        
+        UIImageView *imageView = [cell viewWithTag:1];
+        view.image = imageView.image;
+        view.movie = [_movies objectAtIndex:indexPath.row];
     }
 }
 
@@ -110,6 +120,7 @@ NSMutableArray *_movies;
             
             NSError *error = nil;
             if (![[self managedObjectContext] save:&error]) {
+                NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
                 return;
             }
             
