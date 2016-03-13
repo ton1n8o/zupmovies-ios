@@ -127,9 +127,8 @@ NSString *searchTerm;
     Movie *movie = [_data objectAtIndex:indexPath.row];
     
     ((UILabel*) [cell viewWithTag: 2]).text = movie.title;
-    ((UILabel*) [cell viewWithTag: 3]).text = movie.director;
-    ((UILabel*) [cell viewWithTag: 4]).text = movie.genre;
-    ((UILabel*) [cell viewWithTag: 5]).text = movie.year;
+    ((UILabel*) [cell viewWithTag: 3]).text = movie.type;
+    ((UILabel*) [cell viewWithTag: 4]).text = movie.year;
     
     UIImageView *imgView = (UIImageView*) [cell viewWithTag: 1];
     
