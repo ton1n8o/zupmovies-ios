@@ -204,6 +204,12 @@ BOOL showAlertNoConnetion;
     }
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    // hide keyboard on scroll
+    [self.view endEditing:YES];
+}
+
 #pragma mark - UISearchControllerDelegate Delegate Methods
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar

@@ -17,7 +17,11 @@
 
 @synthesize moviesTableView;
 
+#pragma mark - Variables
+
 NSMutableArray *_movies;
+
+#pragma mark - ViewController Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,14 +34,16 @@ NSMutableArray *_movies;
     [self updateTableView:[self findAllMovies]];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     
     if ([segue.identifier isEqualToString:@"segueAddMovie"]) {
         ViewController *view = segue.destinationViewController;
@@ -180,6 +186,11 @@ NSMutableArray *_movies;
     [request setEntity:entityDesc];
     [request setPredicate:[NSPredicate predicateWithValue:YES]];
     
+    // New movies on top
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"created" ascending:NO];
+    
+    [request setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
     
@@ -232,7 +243,8 @@ NSMutableArray *_movies;
     }
 }
 
-- (NSManagedObjectContext *)managedObjectContext {
+- (NSManagedObjectContext *)managedObjectContext
+{
     NSManagedObjectContext *context = nil;
     id delegate = [[UIApplication sharedApplication] delegate];
     if ([delegate performSelector:@selector(managedObjectContext)]) {

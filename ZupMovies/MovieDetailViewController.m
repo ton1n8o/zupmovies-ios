@@ -269,6 +269,7 @@ UIBarButtonItem *btnSaveTmp;
     [newMovie setValue: movie.imdbRaiting forKey: @"imdbRaiting"];
     [newMovie setValue: movie.plot forKey: @"plot"];
     [newMovie setValue: UIImageJPEGRepresentation(_image, 1) forKey:@"picture"];
+    [newMovie setValue: [NSDate date] forKey:@"created"];
     
     NSError *error;
     if ([context save:&error] == NO) {

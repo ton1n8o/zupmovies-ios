@@ -67,7 +67,9 @@ imdbRaiting, year, plot, director, poster, type, imdbID, image;
     NSString *value = @"";
     
     [m setTitle: dict[@"Title"]];
-    [m setActors: dict[@"Actors"]];
+    
+    value = dict[@"Actors"];
+    [m setActors:[value isEqualToString:NA] ? @"" : value];
     
     value = dict[@"Year"];
     [m setYear:[value isEqualToString:NA] ? @"" : value];
