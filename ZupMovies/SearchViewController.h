@@ -12,7 +12,7 @@
 #import "MovieDetailViewController.h"
 #import "Reachability.h"
 
-@interface ViewController : UIViewController<NSURLConnectionDataDelegate, UITableViewDataSource,
+@interface SearchViewController : UIViewController<NSURLConnectionDataDelegate, UITableViewDataSource,
 UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

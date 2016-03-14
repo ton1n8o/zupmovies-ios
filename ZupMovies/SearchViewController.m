@@ -8,17 +8,17 @@
 
 #import <KVNProgress/KVNProgress.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "ViewController.h"
+#import "SearchViewController.h"
 #import "AppDelegate.h"
 #import "Constants.h"
 
-@interface ViewController ()
+@interface SearchViewController ()
 
 @property (nonatomic) Reachability *hostReachability;
 
 @end
 
-@implementation ViewController
+@implementation SearchViewController
 
 @synthesize modalViewController;
 

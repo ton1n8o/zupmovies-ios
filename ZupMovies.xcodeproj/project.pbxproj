@@ -11,7 +11,7 @@
 		02590D8E1C94D94D00453A97 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 02590D8D1C94D94D00453A97 /* star.png */; };
 		029B90B41C8C2D8100434B76 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90B31C8C2D8100434B76 /* main.m */; };
 		029B90B71C8C2D8100434B76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90B61C8C2D8100434B76 /* AppDelegate.m */; };
-		029B90BA1C8C2D8100434B76 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90B91C8C2D8100434B76 /* ViewController.m */; };
+		029B90BA1C8C2D8100434B76 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 029B90B91C8C2D8100434B76 /* SearchViewController.m */; };
 		029B90BD1C8C2D8100434B76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 029B90BB1C8C2D8100434B76 /* Main.storyboard */; };
 		029B90C01C8C2D8100434B76 /* ZupMovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 029B90BE1C8C2D8100434B76 /* ZupMovies.xcdatamodeld */; };
 		029B90C21C8C2D8100434B76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 029B90C11C8C2D8100434B76 /* Assets.xcassets */; };
@@ -34,8 +34,8 @@
 		029B90B31C8C2D8100434B76 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		029B90B51C8C2D8100434B76 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		029B90B61C8C2D8100434B76 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		029B90B81C8C2D8100434B76 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		029B90B91C8C2D8100434B76 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		029B90B81C8C2D8100434B76 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		029B90B91C8C2D8100434B76 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		029B90BC1C8C2D8100434B76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		029B90BF1C8C2D8100434B76 /* ZupMovies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZupMovies.xcdatamodel; sourceTree = "<group>"; };
 		029B90C11C8C2D8100434B76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 			children = (
 				02590D871C94608600453A97 /* MoviesViewController.h */,
 				02590D881C94608600453A97 /* MoviesViewController.m */,
-				029B90B81C8C2D8100434B76 /* ViewController.h */,
-				029B90B91C8C2D8100434B76 /* ViewController.m */,
+				029B90B81C8C2D8100434B76 /* SearchViewController.h */,
+				029B90B91C8C2D8100434B76 /* SearchViewController.m */,
 				029E08731C90CE8400320749 /* MovieDetailViewController.h */,
 				029E08741C90CE8400320749 /* MovieDetailViewController.m */,
 			);
@@ -300,7 +300,7 @@
 				029E08751C90CE8400320749 /* MovieDetailViewController.m in Sources */,
 				029B90C01C8C2D8100434B76 /* ZupMovies.xcdatamodeld in Sources */,
 				02BE49E21C9607F2001957F9 /* Reachability.m in Sources */,
-				029B90BA1C8C2D8100434B76 /* ViewController.m in Sources */,
+				029B90BA1C8C2D8100434B76 /* SearchViewController.m in Sources */,
 				029B90D01C8C3ACB00434B76 /* Movie.m in Sources */,
 				029B90B71C8C2D8100434B76 /* AppDelegate.m in Sources */,
 				02590D891C94608600453A97 /* MoviesViewController.m in Sources */,

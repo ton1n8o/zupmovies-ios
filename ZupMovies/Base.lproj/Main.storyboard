@@ -139,7 +139,7 @@
         <!--Search-->
         <scene sceneID="dRd-Qg-cdA">
             <objects>
-                <viewController id="f2R-oD-xA6" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="f2R-oD-xA6" customClass="SearchViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="113" sectionHeaderHeight="28" sectionFooterHeight="28" id="cil-wV-SQj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

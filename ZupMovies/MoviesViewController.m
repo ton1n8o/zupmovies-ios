@@ -46,7 +46,7 @@ NSMutableArray *_movies;
 {
     
     if ([segue.identifier isEqualToString:@"segueAddMovie"]) {
-        ViewController *view = segue.destinationViewController;
+        SearchViewController *view = segue.destinationViewController;
         view.moviesViewController = self;
         
     } else if ([segue.identifier isEqualToString:@"showMovieDetailFromHome"]) {

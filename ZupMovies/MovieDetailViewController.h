@@ -6,7 +6,7 @@
 //  Copyright © 2016 Antonio Carlos Silva. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SearchViewController.h"
 #import "AppDelegate.h"
 #import "Movie.h"
 #import <UIKit/UIKit.h>
