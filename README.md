@@ -12,3 +12,5 @@ APIs:
 
 **Obs:** Este projeto está utiliza Cocoapods (https://cocoapods.org), para executar o projeto você deve abrilo pelo
 workspace ZupMovies.xcworkspace
+
+Xcode Version 7.2.1 (7C1002)
