@@ -1,0 +1,32 @@
+/* Message please connect to the internet. */
+"CONNECT_TO_THE_INTERNET" = "Please connect to the internet.";
+
+/* Error title. */
+"ERROR" = "Error";
+
+/* Alert title Information. */
+"INFO" = "Info";
+
+/* Could not connect to server. */
+"MESSAGE_ERROR_SEVER_TIMED_OUT" = "Couldn't connect to server, server timed out..";
+
+/* Error while loading movie data. */
+"MESSAGE_ERROR_LOADING_MOVIES" = "Error while loading movies data.";
+
+/* Error while loding movie data. */
+"MESSAGE_ERRO_WHILE_LOADING_MOVIE_DATA" = "Error while loading movie data.";
+
+/* No more movies. */
+"MESSAGE_NO_MORE_MOVIES" = "No more movies.";
+
+/* No movie found. */
+"MESSAGE_NO_MOVIES_FOULD_FOR_SEARCH" = "No movies found.";
+
+/* Movie aready saved. */
+"MOVIE_IS_ALREADY_SAVED" = "Movie already saved!";
+
+/* Movie saved with success. */
+"MOVIE_SAVED_WITH_SUCCESS" = "Movie saved with success!";
+
+/* Empty table view. */
+"NO_MOVIES_SAVED" = "No movies saved...";

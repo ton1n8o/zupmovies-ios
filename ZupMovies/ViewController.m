@@ -86,8 +86,8 @@ BOOL showAlertNoConnetion;
     if (!isConnected && !showAlertNoConnetion) {
         showAlertNoConnetion = YES;
         
-        [self showAlertDialogWithMessage: @"Favor conectar a internet para realizar buscas."
-                                   title: @"Informação"
+        [self showAlertDialogWithMessage: NSLocalizedString(@"CONNECT_TO_THE_INTERNET", @"Message please connect to the internet.")
+                                   title: NSLocalizedString(@"INFO", @"Alert title Information.")
                                 okAction: [UIAlertAction actionWithTitle:@"OK"
                                                                    style:UIAlertActionStyleDefault
                                                                  handler:^(UIAlertAction * action) {
@@ -283,20 +283,20 @@ BOOL showAlertNoConnetion;
             
             NSLog(@"Can't load movie data! %@ %@", error, [error localizedDescription]);
             
-            NSString *msg = @"Erro ao carregar dados do filme.";
+            NSString *msg = NSLocalizedString(@"MESSAGE_ERROR_LOADING_MOVIES", @"Error while loading movie data.");
             if (error.code == NSURLErrorTimedOut) {
-                msg = @"Erro ao carregar dados do filme, server não está respondendo.";
+                msg = NSLocalizedString(@"MESSAGE_ERROR_SEVER_TIMED_OUT", @"Could not connect to server.");
             }
             
             [self showAlertDialogWithMessage:msg
-                                       title:@"Erro"
+                                       title:NSLocalizedString(@"ERROR", @"Error title.")
                                     okAction:[UIAlertAction actionWithTitle:@"OK"
                                                                       style:UIAlertActionStyleDefault
                                                                     handler:nil]];
         } else {
             NSMutableArray *movies = [self parseData: data];
             if (movies == nil || movies.count == 0) {
-                [self showAlertDialogWithMessage: @"Não foram encontrados filmes para o termo pesquisado."
+                [self showAlertDialogWithMessage: NSLocalizedString(@"MESSAGE_NO_MOVIES_FOULD_FOR_SEARCH", @"No movie found.")
                                            title: nil
                                         okAction: [UIAlertAction actionWithTitle:@"OK"
                                                                           style:UIAlertActionStyleDefault
@@ -332,11 +332,11 @@ BOOL showAlertNoConnetion;
             
             NSString *msg = @"Erro ao pesquisar filmes.";
             if (error.code == NSURLErrorTimedOut) {
-                msg = @"Erro ao pesquisar filmes, server não está respondendo.";
+                msg = NSLocalizedString(@"MESSAGE_ERROR_SEVER_TIMED_OUT", @"Could not connect to server.");
             }
             
             [self showAlertDialogWithMessage:msg
-                                       title:@"Erro"
+                                       title:NSLocalizedString(@"ERROR", @"Error title.")
                                     okAction:[UIAlertAction actionWithTitle:@"OK"
                                                                       style:UIAlertActionStyleDefault
                                                                     handler:nil]];
@@ -371,8 +371,8 @@ BOOL showAlertNoConnetion;
                     
                 } else {
                     // no more movies
-                    [self showAlertDialogWithMessage:@"Não há mais filmes."
-                                               title:@"Erro"
+                    [self showAlertDialogWithMessage:NSLocalizedString(@"MESSAGE_NO_MORE_MOVIES", @"No more movies.")
+                                               title:NSLocalizedString(@"INFO", @"Alert title Information.")
                                             okAction:[UIAlertAction actionWithTitle:@"OK"
                                                                               style:UIAlertActionStyleDefault
                                                                             handler:nil]];

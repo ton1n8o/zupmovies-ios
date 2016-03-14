@@ -1,0 +1,69 @@
+/* Class = "UILabel"; text = "Score"; ObjectID = "1Uw-5Z-NHZ"; */
+"1Uw-5Z-NHZ.text" = "Nota";
+
+/* Class = "UILabel"; text = "Year"; ObjectID = "4EA-qE-Yce"; */
+"4EA-qE-Yce.text" = "Ano";
+
+/* Class = "UISearchBar"; placeholder = "Search"; ObjectID = "4MM-qD-2sd"; */
+"4MM-qD-2sd.placeholder" = "Busca";
+
+/* Class = "UILabel"; text = "Genre"; ObjectID = "7vH-u7-JKJ"; */
+"7vH-u7-JKJ.text" = "Gênero";
+
+/* Class = "UILabel"; text = "Movie Title"; ObjectID = "9ya-0A-lcO"; */
+"9ya-0A-lcO.text" = "Nome do filme";
+
+/* Class = "UILabel"; text = "Score"; ObjectID = "BZ5-Nu-8Jn"; */
+"BZ5-Nu-8Jn.text" = "Nota";
+
+/* Class = "UILabel"; text = "Genre"; ObjectID = "KuD-qV-rwl"; */
+"KuD-qV-rwl.text" = "Gênero";
+
+/* Class = "UILabel"; text = "Actor 1, Actor 2 Actor 3"; ObjectID = "NnU-j0-7dC"; */
+"NnU-j0-7dC.text" = "Actor 1, Actor 2 Actor 3";
+
+/* Class = "UILabel"; text = "Genre"; ObjectID = "P8V-aC-RdW"; */
+"P8V-aC-RdW.text" = "Gênero";
+
+/* Class = "UILabel"; text = "Actors"; ObjectID = "awR-1d-tIp"; */
+"awR-1d-tIp.text" = "Atores";
+
+/* Class = "UINavigationItem"; title = "Search"; ObjectID = "bVh-hd-hDE"; */
+"bVh-hd-hDE.title" = "Busca";
+
+/* Class = "UILabel"; text = "Movie Title"; ObjectID = "dhy-9I-Jwj"; */
+"dhy-9I-Jwj.text" = "Nome do filme";
+
+/* Class = "UILabel"; text = "Director"; ObjectID = "hK4-iD-3HC"; */
+"hK4-iD-3HC.text" = "Diretor";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "hTX-Zq-pu7"; */
+"hTX-Zq-pu7.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "kr1-YR-EaP"; */
+"kr1-YR-EaP.text" = "Tipo";
+
+/* Class = "UILabel"; text = "/10"; ObjectID = "ldX-s1-bK5"; */
+"ldX-s1-bK5.text" = "/10";
+
+/* Class = "UILabel"; text = "Year"; ObjectID = "oa2-2x-kGE"; */
+"oa2-2x-kGE.text" = "Ano";
+
+/* Class = "UILabel"; text = "Year"; ObjectID = "pA5-QK-60T"; */
+"pA5-QK-60T.text" = "Ano";
+
+/* Class = "UILabel"; text = "/10"; ObjectID = "s5x-uL-KKk"; */
+"s5x-uL-KKk.text" = "/10";
+
+/* Class = "UILabel"; text = "Movie Title"; ObjectID = "sPR-TE-oPb"; */
+"sPR-TE-oPb.text" = "Nome do filme";
+
+/* Class = "UILabel"; text = "Director"; ObjectID = "vhL-oP-hsw"; */
+"vhL-oP-hsw.text" = "Diretor";
+
+/* Class = "UINavigationItem"; title = "Movies"; ObjectID = "xnD-tU-zcQ"; */
+"xnD-tU-zcQ.title" = "Filmes";
+
+/* Class = "UINavigationItem"; title = "Movie Details"; ObjectID = "yMR-aV-AoT"; */
+"yMR-aV-AoT.title" = "Detalhes do filme";
+

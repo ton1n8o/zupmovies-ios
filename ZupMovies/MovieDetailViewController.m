@@ -62,13 +62,13 @@ UIBarButtonItem *btnSaveTmp;
                 
                 NSLog(@"Can't load movie data! %@ %@", error, [error localizedDescription]);
                 
-                NSString *msg = @"Erro ao carregar dados do filme.";
+                NSString *msg = NSLocalizedString(@"MESSAGE_ERRO_WHILE_LOADING_MOVIE_DATA", @"Error while loding movie data.");
                 if (error.code == NSURLErrorTimedOut) {
-                    msg = @"Erro ao carregar dados do filme, server não está respondendo.";
+                    msg = NSLocalizedString(@"MESSAGE_ERROR_SEVER_TIMED_OUT", @"Could not connect to server.");
                 }
                 
                 [self showAlertDialogWithMessage:msg
-                                           title:@"Erro"
+                                           title:NSLocalizedString(@"ERROR", @"Error title.")
                                         okAction:[UIAlertAction actionWithTitle:@"OK"
                                                                           style:UIAlertActionStyleDefault
                                                                         handler:^(UIAlertAction * action) {
@@ -246,7 +246,7 @@ UIBarButtonItem *btnSaveTmp;
 {
     
     if ([self findMovie:movie.imdbID]) {
-        [self showAlertDialogWithMessage:@"Filme já salvo!"
+        [self showAlertDialogWithMessage:NSLocalizedString(@"MOVIE_IS_ALREADY_SAVED", @"Movie aready saved.")
                                    title:nil
                                 okAction:[UIAlertAction actionWithTitle:@"OK"
                                                                   style:UIAlertActionStyleDefault
@@ -274,7 +274,7 @@ UIBarButtonItem *btnSaveTmp;
     if ([context save:&error] == NO) {
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
     } else {
-        [self showAlertDialogWithMessage:@"Filme salvo com suceso!"
+        [self showAlertDialogWithMessage:NSLocalizedString(@"MOVIE_SAVED_WITH_SUCCESS", @"Movie saved with success.")
                                    title:nil
                                 okAction:[UIAlertAction actionWithTitle:@"OK"
                                                                   style:UIAlertActionStyleDefault

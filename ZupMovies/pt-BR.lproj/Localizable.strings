@@ -1,0 +1,33 @@
+/* Message please connect to the internet. */
+"CONNECT_TO_THE_INTERNET" = "Favor conectar a internet para realizar buscas.";
+
+/* Error title. */
+"ERROR" = "Erro";
+
+/* Alert title Information. */
+"INFO" = "Informação";
+
+/* Could not connect to server. */
+"MESSAGE_ERROR_SEVER_TIMED_OUT" = "Erro ao conectar ao servidor, servidor excedeu tempo de resposta.";
+
+/* Error while loading movie data. */
+"MESSAGE_ERROR_LOADING_MOVIES" = "Erro ao consultar os filmes.";
+
+/* Error while loding movie data. */
+"MESSAGE_ERRO_WHILE_LOADING_MOVIE_DATA" = "Erro ao carregar os dados do filme.";
+
+/* No more movies. */
+"MESSAGE_NO_MORE_MOVIES" = "Não há mais filmes para esta pesquisa.";
+
+/* No movie found. */
+"MESSAGE_NO_MOVIES_FOULD_FOR_SEARCH" = "Não foram encontrados filmes com o termo pesquisado.";
+
+/* Movie aready saved. */
+"MOVIE_IS_ALREADY_SAVED" = "Filme já existe!";
+
+/* Movie saved with success. */
+"MOVIE_SAVED_WITH_SUCCESS" = "Filme salvo com sucesso!";
+
+/* Empty table view. */
+"NO_MOVIES_SAVED" = "Não há filmes salvos...";
+

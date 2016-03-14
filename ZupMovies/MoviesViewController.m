@@ -70,7 +70,7 @@ NSMutableArray *_movies;
     // Display a message when the table is empty
     UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     
-    messageLabel.text = @"Não há filmes salvos...";
+    messageLabel.text = NSLocalizedString(@"NO_MOVIES_SAVED", @"Empty table view.");
     messageLabel.textColor = [UIColor blackColor];
     messageLabel.numberOfLines = 0;
     messageLabel.textAlignment = NSTextAlignmentCenter;
