@@ -1,6 +1,6 @@
 # zupmovies-ios
 
-## Projeto teste iOS proposto pela empresa Zup.
+## Projeto proposto pela empresa Zup.
 
 **Objetivo:** Consumir serviço RESTful do site (http://www.omdbapi.com/) e permitir ao usuário salvar os filmes pesquisados para acesso offline.
 
